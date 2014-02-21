@@ -1,22 +1,60 @@
 {% extends "FOSUserBundle::layout.html.twig" %}
 
 {% block fos_user_content %}
-{% if error %}
-    <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
-{% endif %}
 
-<form action="{{ path("fos_user_security_check") }}" method="post">
+<div class="account-container stacked">
+	
+	<div class="content clearfix">
+		
+		<form action="{{ path("fos_user_security_check") }}" method="post">
     <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
-
-    <label for="username">{{ 'security.login.username'|trans({}, 'FOSUserBundle') }}</label>
-    <input type="text" id="username" name="_username" value="{{ last_username }}" required="required" />
-
-    <label for="password">{{ 'security.login.password'|trans({}, 'FOSUserBundle') }}</label>
-    <input type="password" id="password" name="_password" required="required" />
-
-    <input type="checkbox" id="remember_me" name="_remember_me" value="on" />
-    <label for="remember_me">{{ 'security.login.remember_me'|trans({}, 'FOSUserBundle') }}</label>
-
-    <input type="submit" id="_submit" name="_submit" value="{{ 'security.login.submit'|trans({}, 'FOSUserBundle') }}" />
-</form>
+		
+			<h1>Identifiez-vous</h1>		
+			
+			<div class="login-fields">
+				
+				<p>Connectez-vous en utilisant votre compte :</p>
+                                <p style="color: red">{% if error %}
+    <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
+{% endif %}</p>
+				<div class="field">
+					<label for="username">Nom d'utilisateur</label>
+                                       
+					<input type="text" id="username" name="_username" value="" required="required" placeholder=" Username" class="login username-field" />
+				</div> <!-- /field -->
+				
+				<div class="field">
+					<label for="password">Mot de passe</label>
+                                        <input type="password" id="password" name="_password" value="" required="required" placeholder="Password" class="login password-field" />
+					
+				</div> <!-- /password -->
+				
+			</div> <!-- /login-fields -->
+			
+			<div class="login-actions">
+				
+				<span class="login-checkbox">
+                                    <input type="checkbox" id="remember_me" name="_remember_me" value="on" class="field login-checkbox" tabindex="4"/>
+					<label class="choice" for="Field">Se souvenir de moi</label>
+				</span>
+									
+				<button type="submit" id="_submit"  class="button btn btn-warning btn-large" name="_submit">Se connecter</button>
+				
+			</div> <!-- .actions -->
+			
+			<div class="login-social">
+				
+			</div>
+			
+		</form>
+		
+	</div> <!-- /content -->
+	
+</div> <!-- /account-container -->
 {% endblock fos_user_content %}
+
+    
+    
+    
+
+

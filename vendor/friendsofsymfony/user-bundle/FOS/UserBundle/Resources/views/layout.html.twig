@@ -1,19 +1,73 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-    </head>
-    <body>
-        <div>
-            {% if is_granted("IS_AUTHENTICATED_REMEMBERED") %}
-                {{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }} |
-                <a href="{{ path('fos_user_security_logout') }}">
-                    {{ 'layout.logout'|trans({}, 'FOSUserBundle') }}
-                </a>
-            {% else %}
-                <a href="{{ path('fos_user_security_login') }}">{{ 'layout.login'|trans({}, 'FOSUserBundle') }}</a>
-            {% endif %}
-        </div>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Login :: Candidature</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" /> 
+    {% block stylesheets %}{% endblock %}
+	<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ asset('css/bootstrap-responsive.min.css') }}" rel="stylesheet" type="text/css" />
+	
+	<link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet" />
+    
+    <link href="{{ asset('css/ui-lightness/jquery-ui-1.10.0.custom.min.css') }}" rel="stylesheet" />    
+    
+    <link href="{{ asset('css/base-admin-2.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/base-admin-2-responsive.css') }}" rel="stylesheet" />
+	
+    <link href="{{ asset('css/pages/signin.css') }}" rel="stylesheet" type="text/css" />
+
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+
+<body>
+	
+	<div class="navbar navbar-inverse navbar-fixed-top">
+	
+	<div class="navbar-inner">
+		
+		<div class="container">
+			
+			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				<i class="icon-cog"></i>
+			</a>
+			
+			<a class="brand" href="index.html">
+				Candidature <sup>EN Ligne</sup>				
+			</a>		
+			
+			<div class="nav-collapse">
+				<ul class="nav pull-right">
+					
+					<li class="">						
+						<a href="signup.html" class="">
+							Nouvelle candidature
+						</a>
+						
+					</li>
+					
+					<li class="">						
+						<a href="" class="">
+							<i class="icon-chevron-left"></i>
+							Retour à l'accueil
+						</a>
+						
+					</li>
+				</ul>
+				
+			</div><!--/.nav-collapse -->	
+	
+		</div> <!-- /container -->
+		
+	</div> <!-- /navbar-inner -->
+	
+</div> <!-- /navbar -->
+
+    
 
         {% for type, messages in app.session.flashBag.all %}
             {% for message in messages %}
@@ -27,5 +81,18 @@
             {% block fos_user_content %}
             {% endblock fos_user_content %}
         </div>
-    </body>
+  
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{{ asset('js/libs/jquery-1.8.3.min.js') }}"></script>
+<script src="{{ asset('js/libs/jquery-ui-1.10.0.custom.min.js') }}"></script>
+<script src="{{ asset('js/libs/bootstrap.min.js') }}"></script>
+
+<script src="{{ asset('js/Application.js') }}"></script>
+
+<script src="{{ asset('js/signin.js') }}"></script>
+{% block javascripts %}{% endblock %}
+</body>
 </html>

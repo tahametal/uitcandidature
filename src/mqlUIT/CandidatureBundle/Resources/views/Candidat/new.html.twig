@@ -1,7 +1,7 @@
 {% extends '::base.html.twig' %}
-
+  {% block titreP -%}Candidat creation{% endblock %}
 {% block body -%}
-    <h1>Candidat creation</h1>
+  
 
     <form action="{{ path('candidat_create') }}" method="post" {{ form_enctype(form) }}>
         {{ form_widget(form) }}

@@ -1,13 +1,158 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8" />
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        {% block stylesheets %}{% endblock %}
-        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
-    </head>
-    <body>
-        {% block body %}{% endblock %}
-        {% block javascripts %}{% endblock %}
-    </body>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <title>Login :: Candidature</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+    <meta name="apple-mobile-web-app-capable" content="yes" /> 
+    {% block stylesheets %}{% endblock %}
+	<link href="{{ asset('css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
+	<link href="{{ asset('css/bootstrap-responsive.min.css') }}" rel="stylesheet" type="text/css" />
+	
+	<link href="{{ asset('css/font-awesome.min.css') }}" rel="stylesheet" />
+    <link href="http://fonts.googleapis.com/css?family=Open+Sans:400italic,600italic,400,600" rel="stylesheet" />
+    
+    <link href="{{ asset('css/ui-lightness/jquery-ui-1.10.0.custom.min.css') }}" rel="stylesheet" />    
+    
+    <link href="{{ asset('css/base-admin-2.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/base-admin-2-responsive.css') }}" rel="stylesheet" />
+	
+    <link href="{{ asset('css/pages/signin.css') }}" rel="stylesheet" type="text/css" />
+<link href="{{ asset('css/pages/signin.css') }}" rel="stylesheet" type="text/css" />
+    <link href="{{ asset('css/custom.css') }}" rel="stylesheet" />
+
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" /></head>
+
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+	
+	<div class="navbar-inner">
+		
+		<div class="container">
+			
+			<a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+				<i class="icon-cog"></i>
+			</a>
+			
+			<a class="brand" href="./index.html">
+				Candidature <sup>EN Ligne</sup>				
+			</a>		
+			
+			<div class="nav-collapse">
+				<ul class="nav pull-right">
+				
+			
+					<li class="dropdown">
+						
+						<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+							<i class="icon-user"></i> 
+							{% block user %}MKHAKH Radouane{% endblock %}
+							<b class="caret"></b>
+						</a>
+						
+						<ul class="dropdown-menu">
+							<li><a href="javascript:;">Mon Profil</a></li>
+							
+							<li class="divider"></li>
+							<li><a href="javascript:;">Déconnexion</a></li>
+						</ul>
+						
+					</li>
+				</ul>
+			
+				<form class="navbar-search pull-right" />
+					<input type="text" class="search-query" placeholder="Search" />
+				</form>
+				
+			</div><!--/.nav-collapse -->	
+	
+		</div> <!-- /container -->
+		
+	</div> <!-- /navbar-inner -->
+	
+</div> <!-- /navbar -->
+	
+
+
+    
+<div class="subnavbar">
+
+	<div class="subnavbar-inner">
+	
+		<div class="container">
+
+			<a class="btn-subnavbar collapsed" data-toggle="collapse" data-target=".subnav-collapse">
+				<i class="icon-reorder"></i>
+			</a>
+
+			<div class="subnav-collapse collapse">
+				<ul class="mainnav">
+				
+					<li class="active">
+						<a href="">
+							<i class="icon-external-link"></i>
+							<span>Candidature</span>
+						</a>	    				
+					</li>
+					
+				</ul>
+			</div> <!-- /.subnav-collapse -->
+
+		</div> <!-- /container -->
+	
+	</div> <!-- /subnavbar-inner -->
+
+</div> <!-- /subnavbar -->
+
+
+
+
+
+<div class="main">
+
+    <div class="container">
+
+      <div class="row">
+      	
+      	<div class="span12">
+      		
+      		<div class="widget stacked">
+					
+				<div class="widget-header">
+					<i class="icon-check"></i>
+					{% block titreP %}{% endblock %}
+				</div> <!-- /widget-header -->
+				
+				<div class="widget-content">
+					
+					<br />
+					
+					{% block body %}{% endblock %}
+				</div> <!-- /widget-content -->
+					
+			</div> <!-- /widget -->					
+			
+	    </div> <!-- /span12 -->     	
+      	
+      	
+      </div> <!-- /row -->
+
+    </div> <!-- /container -->
+    
+</div> <!-- /main -->
+
+
+<!-- Le javascript
+================================================== -->
+<!-- Placed at the end of the document so the pages load faster -->
+<script src="{{ asset('js/libs/jquery-1.8.3.min.js') }}"></script>
+<script src="{{ asset('js/libs/jquery-ui-1.10.0.custom.min.js') }}"></script>
+<script src="{{ asset('js/libs/bootstrap.min.js') }}"></script>
+
+<script src="{{ asset('js/Application.js') }}"></script>
+
+<script src="{{ asset('js/signin.js') }}"></script>
+{% block javascripts %}{% endblock %}
+</body>
 </html>
