@@ -1,0 +1,7 @@
+parameters:
+#    mql_uit_candidature.example.class: mqlUIT\CandidatureBundle\Example
+
+services:
+#    mql_uit_candidature.example:
+#        class: %mql_uit_candidature.example.class%
+#        arguments: [@service_id, "plain_value", %parameter%]

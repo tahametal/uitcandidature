@@ -1,0 +1,30 @@
+candidature:
+    pattern:  /candidature
+    defaults: { _controller: "mqlUITCandidatureBundle:Candidature:index" }
+
+candidature_show:
+    pattern:  /candidature/{id}/show
+    defaults: { _controller: "mqlUITCandidatureBundle:Candidature:show" }
+
+candidature_new:
+    pattern:  /candidature/new
+    defaults: { _controller: "mqlUITCandidatureBundle:Candidature:new" }
+
+candidature_create:
+    pattern:  /candidature/create
+    defaults: { _controller: "mqlUITCandidatureBundle:Candidature:create" }
+    requirements: { _method: post }
+
+candidature_edit:
+    pattern:  /candidature/{id}/edit
+    defaults: { _controller: "mqlUITCandidatureBundle:Candidature:edit" }
+
+candidature_update:
+    pattern:  /candidature/{id}/update
+    defaults: { _controller: "mqlUITCandidatureBundle:Candidature:update" }
+    requirements: { _method: post|put }
+
+candidature_delete:
+    pattern:  /candidature/{id}/delete
+    defaults: { _controller: "mqlUITCandidatureBundle:Candidature:delete" }
+    requirements: { _method: post|delete }

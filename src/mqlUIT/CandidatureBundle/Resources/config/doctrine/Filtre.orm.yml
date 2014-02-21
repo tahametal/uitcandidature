@@ -1,0 +1,18 @@
+mqlUIT\CandidatureBundle\Entity\Filtre:
+    type: entity
+    table: filtre
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        filtre:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+            column: Filtre
+    lifecycleCallbacks: {  }

@@ -1,0 +1,30 @@
+mql_uit_candidature_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: mqlUITCandidatureBundle:Default:index }
+candidat: 
+  resource: "@mqlUITCandidatureBundle/Resources/config/routing/candidat.yml" 
+diplometype: 
+  resource: "@mqlUITCandidatureBundle/Resources/config/routing/diplometype.yml"
+experiencetype: 
+  resource: "@mqlUITCandidatureBundle/Resources/config/routing/experiencetype.yml" 
+filiere: 
+  resource: "@mqlUITCandidatureBundle/Resources/config/routing/filiere.yml" 
+responsable: 
+  resource: "@mqlUITCandidatureBundle/Resources/config/routing/responsable.yml" 
+semestre: 
+  resource: "@mqlUITCandidatureBundle/Resources/config/routing/semestre.yml" 
+experience: 
+  resource: "@mqlUITCandidatureBundle/Resources/config/routing/experience.yml" 
+userfos: 
+  resource: "@mqlUITCandidatureBundle/Resources/config/routing/userfos.yml" 
+filtre: 
+  resource: "@mqlUITCandidatureBundle/Resources/config/routing/filtre.yml" 
+filtrefiliere: 
+  resource: "@mqlUITCandidatureBundle/Resources/config/routing/filtrefiliere.yml" 
+diplome: 
+  resource: "@mqlUITCandidatureBundle/Resources/config/routing/diplome.yml"  
+candidature: 
+  resource: "@mqlUITCandidatureBundle/Resources/config/routing/candidature.yml"  
+detailsemestre: 
+  resource: "@mqlUITCandidatureBundle/Resources/config/routing/detailsemestre.yml"  
+  

@@ -1,0 +1,17 @@
+mqlUIT\CandidatureBundle\Entity\Diplometype:
+    type: entity
+    table: diplometype
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        type:
+            type: string
+            length: 150
+            fixed: false
+            nullable: true
+    lifecycleCallbacks: {  }

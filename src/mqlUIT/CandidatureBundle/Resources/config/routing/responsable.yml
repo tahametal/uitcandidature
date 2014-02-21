@@ -1,0 +1,30 @@
+responsable:
+    pattern:  /responsable
+    defaults: { _controller: "mqlUITCandidatureBundle:Responsable:index" }
+
+responsable_show:
+    pattern:  /responsable/{id}/show
+    defaults: { _controller: "mqlUITCandidatureBundle:Responsable:show" }
+
+responsable_new:
+    pattern:  /responsable/new
+    defaults: { _controller: "mqlUITCandidatureBundle:Responsable:new" }
+
+responsable_create:
+    pattern:  /responsable/create
+    defaults: { _controller: "mqlUITCandidatureBundle:Responsable:create" }
+    requirements: { _method: post }
+
+responsable_edit:
+    pattern:  /responsable/{id}/edit
+    defaults: { _controller: "mqlUITCandidatureBundle:Responsable:edit" }
+
+responsable_update:
+    pattern:  /responsable/{id}/update
+    defaults: { _controller: "mqlUITCandidatureBundle:Responsable:update" }
+    requirements: { _method: post|put }
+
+responsable_delete:
+    pattern:  /responsable/{id}/delete
+    defaults: { _controller: "mqlUITCandidatureBundle:Responsable:delete" }
+    requirements: { _method: post|delete }

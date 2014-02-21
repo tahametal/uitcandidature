@@ -1,0 +1,39 @@
+mqlUIT\CandidatureBundle\Entity\DetailSemestre:
+    type: entity
+    table: detail_semestre
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        note:
+            type: float
+            nullable: true
+        hasrattrapage:
+            type: string
+            length: 1
+            fixed: false
+            nullable: true
+    manyToOne:
+        semestre:
+            targetEntity: Semestre
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                semestre_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        candidat:
+            targetEntity: Candidat
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                candidat_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

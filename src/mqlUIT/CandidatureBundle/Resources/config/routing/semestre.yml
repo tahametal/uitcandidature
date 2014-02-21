@@ -1,0 +1,30 @@
+semestre:
+    pattern:  /semestre
+    defaults: { _controller: "mqlUITCandidatureBundle:Semestre:index" }
+
+semestre_show:
+    pattern:  /semestre/{id}/show
+    defaults: { _controller: "mqlUITCandidatureBundle:Semestre:show" }
+
+semestre_new:
+    pattern:  /semestre/new
+    defaults: { _controller: "mqlUITCandidatureBundle:Semestre:new" }
+
+semestre_create:
+    pattern:  /semestre/create
+    defaults: { _controller: "mqlUITCandidatureBundle:Semestre:create" }
+    requirements: { _method: post }
+
+semestre_edit:
+    pattern: /semestre/{id}/edit
+    defaults: { _controller: "mqlUITCandidatureBundle:Semestre:edit" }
+
+semestre_update:
+    pattern:  /semestre/{id}/update
+    defaults: { _controller: "mqlUITCandidatureBundle:Semestre:update" }
+    requirements: { _method: post|put }
+
+semestre_delete:
+    pattern:  /semestre/{id}/delete
+    defaults: { _controller: "mqlUITCandidatureBundle:Semestre:delete" }
+    requirements: { _method: post|delete }

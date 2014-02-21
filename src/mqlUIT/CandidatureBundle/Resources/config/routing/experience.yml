@@ -1,0 +1,30 @@
+experience:
+    pattern:  /experience
+    defaults: { _controller: "mqlUITCandidatureBundle:Experience:index" }
+
+experience_show:
+    pattern:  /experience/{id}/show
+    defaults: { _controller: "mqlUITCandidatureBundle:Experience:show" }
+
+experience_new:
+    pattern:  /experience/new
+    defaults: { _controller: "mqlUITCandidatureBundle:Experience:new" }
+
+experience_create:
+    pattern:  /experience/create
+    defaults: { _controller: "mqlUITCandidatureBundle:Experience:create" }
+    requirements: { _method: post }
+
+experience_edit:
+    pattern:  /experience/{id}/edit
+    defaults: { _controller: "mqlUITCandidatureBundle:Experience:edit" }
+
+experience_update:
+    pattern:  /experience/{id}/update
+    defaults: { _controller: "mqlUITCandidatureBundle:Experience:update" }
+    requirements: { _method: post|put }
+
+experience_delete:
+    pattern:  /experience/{id}/delete
+    defaults: { _controller: "mqlUITCandidatureBundle:Experience:delete" }
+    requirements: { _method: post|delete }

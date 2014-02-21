@@ -1,0 +1,62 @@
+mqlUIT\CandidatureBundle\Entity\Diplome:
+    type: entity
+    table: diplome
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        intitule:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+        dateinscription:
+            type: date
+            nullable: true
+            column: dateInscription
+        dateobtention:
+            type: date
+            nullable: true
+            column: dateObtention
+        note:
+            type: float
+            nullable: true
+        mention:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+        etablissement:
+            type: string
+            length: 200
+            fixed: false
+            nullable: true
+        ville:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+    manyToOne:
+        candidat:
+            targetEntity: Candidat
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                candidat_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+        diplometype:
+            targetEntity: Diplometype
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                diplometype_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

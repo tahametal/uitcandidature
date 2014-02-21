@@ -1,0 +1,30 @@
+filtre:
+    pattern:  /filtre
+    defaults: { _controller: "mqlUITCandidatureBundle:Filtre:index" }
+
+filtre_show:
+    pattern:  filtre/{id}/show
+    defaults: { _controller: "mqlUITCandidatureBundle:Filtre:show" }
+
+filtre_new:
+    pattern:  filtre/new
+    defaults: { _controller: "mqlUITCandidatureBundle:Filtre:new" }
+
+filtre_create:
+    pattern:  filtre/create
+    defaults: { _controller: "mqlUITCandidatureBundle:Filtre:create" }
+    requirements: { _method: post }
+
+filtre_edit:
+    pattern:  filtre/{id}/edit
+    defaults: { _controller: "mqlUITCandidatureBundle:Filtre:edit" }
+
+filtre_update:
+    pattern:  filtre/{id}/update
+    defaults: { _controller: "mqlUITCandidatureBundle:Filtre:update" }
+    requirements: { _method: post|put }
+
+filtre_delete:
+    pattern:  filtre/{id}/delete
+    defaults: { _controller: "mqlUITCandidatureBundle:Filtre:delete" }
+    requirements: { _method: post|delete }

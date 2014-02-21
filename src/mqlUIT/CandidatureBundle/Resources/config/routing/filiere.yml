@@ -1,0 +1,30 @@
+filiere:
+    pattern:  /filiere
+    defaults: { _controller: "mqlUITCandidatureBundle:Filiere:index" }
+
+filiere_show:
+    pattern:  /filiere/{id}/show
+    defaults: { _controller: "mqlUITCandidatureBundle:Filiere:show" }
+
+filiere_new:
+    pattern:  /filiere/new
+    defaults: { _controller: "mqlUITCandidatureBundle:Filiere:new" }
+
+filiere_create:
+    pattern:  /filiere/create
+    defaults: { _controller: "mqlUITCandidatureBundle:Filiere:create" }
+    requirements: { _method: post }
+
+filiere_edit:
+    pattern:  /filiere/{id}/edit
+    defaults: { _controller: "mqlUITCandidatureBundle:Filiere:edit" }
+
+filiere_update:
+    pattern:  /filiere/{id}/update
+    defaults: { _controller: "mqlUITCandidatureBundle:Filiere:update" }
+    requirements: { _method: post|put }
+
+filiere_delete:
+    pattern:  /filiere/{id}/delete
+    defaults: { _controller: "mqlUITCandidatureBundle:Filiere:delete" }
+    requirements: { _method: post|delete }

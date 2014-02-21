@@ -1,0 +1,30 @@
+detailsemestre:
+    pattern:  /detailsemestre
+    defaults: { _controller: "mqlUITCandidatureBundle:DetailSemestre:index" }
+
+detailsemestre_show:
+    pattern:  /detailsemestre/{id}/show
+    defaults: { _controller: "mqlUITCandidatureBundle:DetailSemestre:show" }
+
+detailsemestre_new:
+    pattern:  /detailsemestre/new
+    defaults: { _controller: "mqlUITCandidatureBundle:DetailSemestre:new" }
+
+detailsemestre_create:
+    pattern:  /detailsemestre/create
+    defaults: { _controller: "mqlUITCandidatureBundle:DetailSemestre:create" }
+    requirements: { _method: post }
+
+detailsemestre_edit:
+    pattern:  /detailsemestre/{id}/edit
+    defaults: { _controller: "mqlUITCandidatureBundle:DetailSemestre:edit" }
+
+detailsemestre_update:
+    pattern:  /detailsemestre/{id}/update
+    defaults: { _controller: "mqlUITCandidatureBundle:DetailSemestre:update" }
+    requirements: { _method: post|put }
+
+detailsemestre_delete:
+    pattern:  /detailsemestre/{id}/delete
+    defaults: { _controller: "mqlUITCandidatureBundle:DetailSemestre:delete" }
+    requirements: { _method: post|delete }

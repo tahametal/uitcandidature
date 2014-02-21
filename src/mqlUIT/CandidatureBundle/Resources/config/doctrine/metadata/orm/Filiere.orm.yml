@@ -1,0 +1,27 @@
+Filiere:
+    type: entity
+    table: filiere
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        intitule:
+            type: string
+            length: 200
+            fixed: false
+            nullable: true
+    manyToOne:
+        responsable:
+            targetEntity: Responsable
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                responsable:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

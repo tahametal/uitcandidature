@@ -1,0 +1,30 @@
+userfos:
+    pattern:  /user
+    defaults: { _controller: "mqlUITCandidatureBundle:Userfos:index" }
+
+userfos_show:
+    pattern:  /user/{id}/show
+    defaults: { _controller: "mqlUITCandidatureBundle:Userfos:show" }
+
+userfos_new:
+    pattern:  /user/new
+    defaults: { _controller: "mqlUITCandidatureBundle:Userfos:new" }
+
+userfos_create:
+    pattern:  /user/create
+    defaults: { _controller: "mqlUITCandidatureBundle:Userfos:create" }
+    requirements: { _method: post }
+
+userfos_edit:
+    pattern:  /user/{id}/edit
+    defaults: { _controller: "mqlUITCandidatureBundle:Userfos:edit" }
+
+userfos_update:
+    pattern:  /user/{id}/update
+    defaults: { _controller: "mqlUITCandidatureBundle:Userfos:update" }
+    requirements: { _method: post|put }
+
+userfos_delete:
+    pattern:  /user/{id}/delete
+    defaults: { _controller: "mqlUITCandidatureBundle:Userfos:delete" }
+    requirements: { _method: post|delete }

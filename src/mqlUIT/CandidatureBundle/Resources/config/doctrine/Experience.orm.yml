@@ -1,0 +1,47 @@
+mqlUIT\CandidatureBundle\Entity\Experience:
+    type: entity
+    table: experience
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        intitule:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+        datedebut:
+            type: datetime
+            nullable: true
+        datefin:
+            type: datetime
+            nullable: true
+        description:
+            type: string
+            length: 250
+            fixed: false
+            nullable: true
+    manyToOne:
+        type:
+            targetEntity: Experiencetype
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                type:
+                    referencedColumnName: id
+            orphanRemoval: false
+        candidat:
+            targetEntity: Candidat
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                candidat:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

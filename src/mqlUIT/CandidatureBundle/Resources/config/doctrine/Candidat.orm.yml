@@ -1,0 +1,80 @@
+mqlUIT\CandidatureBundle\Entity\Candidat:
+    type: entity
+    table: candidat
+    fields:
+        id:
+            id: true
+            type: integer
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: IDENTITY
+        nom:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+        prenom:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+        datenaissance:
+            type: datetime
+            nullable: true
+        adresse:
+            type: string
+            length: 200
+            fixed: false
+            nullable: true
+        cin:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+        cne:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+        email:
+            type: string
+            length: 150
+            fixed: false
+            nullable: true
+        telephone:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+        nationalite:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+        ville:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+        pays:
+            type: string
+            length: 45
+            fixed: false
+            nullable: true
+        sexe:
+            type: string
+            length: 1
+            fixed: false
+            nullable: true
+    manyToOne:
+        userfos:
+            targetEntity: Userfos
+            cascade: {  }
+            mappedBy: null
+            inversedBy: null
+            joinColumns:
+                userfos_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+    lifecycleCallbacks: {  }

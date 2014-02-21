@@ -1,0 +1,30 @@
+diplometype:
+    pattern:  /diplometype
+    defaults: { _controller: "mqlUITCandidatureBundle:Diplometype:index" }
+
+diplometype_show:
+    pattern:  /diplometype/{id}/show
+    defaults: { _controller: "mqlUITCandidatureBundle:Diplometype:show" }
+
+diplometype_new:
+    pattern:  /diplometype/new
+    defaults: { _controller: "mqlUITCandidatureBundle:Diplometype:new" }
+
+diplometype_create:
+    pattern:  /diplometype/create
+    defaults: { _controller: "mqlUITCandidatureBundle:Diplometype:create" }
+    requirements: { _method: post }
+
+diplometype_edit:
+    pattern:  /diplometype/{id}/edit
+    defaults: { _controller: "mqlUITCandidatureBundle:Diplometype:edit" }
+
+diplometype_update:
+    pattern:  /diplometype/{id}/update
+    defaults: { _controller: "mqlUITCandidatureBundle:Diplometype:update" }
+    requirements: { _method: post|put }
+
+diplometype_delete:
+    pattern:  /diplometype/{id}/delete
+    defaults: { _controller: "mqlUITCandidatureBundle:Diplometype:delete" }
+    requirements: { _method: post|delete }
