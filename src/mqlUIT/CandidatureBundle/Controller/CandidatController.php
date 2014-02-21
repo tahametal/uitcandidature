@@ -47,7 +47,7 @@ class CandidatController extends Controller
             //$fos->setUsername($usr->getUsername());
            
             //$entity->setUserfos($fos);
-            
+            ///////test
            // $form->setData($modelData);
             
             $em->persist($entity);
