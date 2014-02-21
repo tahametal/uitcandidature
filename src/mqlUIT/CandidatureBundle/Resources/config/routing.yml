@@ -28,3 +28,6 @@ candidature:
 detailsemestre: 
   resource: "@mqlUITCandidatureBundle/Resources/config/routing/detailsemestre.yml"  
   
+redirect:
+    pattern: /redirection
+    defaults: { _controller: mqlUITCandidatureBundle:Redirection:redirect }
