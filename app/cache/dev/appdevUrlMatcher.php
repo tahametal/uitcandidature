@@ -939,6 +939,11 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
         }
 
+        // redirect
+        if ($pathinfo === '/redirection') {
+            return array (  '_controller' => 'mqlUIT\\CandidatureBundle\\Controller\\RedirectionController::redirectAction',  '_route' => 'redirect',);
+        }
+
         if (0 === strpos($pathinfo, '/log')) {
             if (0 === strpos($pathinfo, '/login')) {
                 // fos_user_security_login

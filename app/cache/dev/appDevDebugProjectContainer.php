@@ -299,11 +299,11 @@ class appDevDebugProjectContainer extends Container
      * This service is shared.
      * This method always returns the same instance of the service.
      *
-     * @return EntityManager53077f672c36c_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager A EntityManager53077f672c36c_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager instance.
+     * @return EntityManager530792b339520_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager A EntityManager530792b339520_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager instance.
      */
     protected function getDoctrine_Orm_DefaultEntityManagerService()
     {
-        require_once 'C:/wamp/www/uitcandidature/app/cache/dev/jms_diextra/doctrine/EntityManager_53077f672c36c.php';
+        require_once 'C:/wamp/www/uitcandidature/app/cache/dev/jms_diextra/doctrine/EntityManager_530792b339520.php';
 
         $a = new \Doctrine\Common\Cache\ArrayCache();
         $a->setNamespace('sf2orm_default_9bd6519c9ac03d3dbb1f728311169b41');
@@ -341,7 +341,7 @@ class appDevDebugProjectContainer extends Container
         $h = call_user_func(array('Doctrine\\ORM\\EntityManager', 'create'), $this->get('doctrine.dbal.default_connection'), $g);
         $this->get('doctrine.orm.default_manager_configurator')->configure($h);
 
-        return $this->services['doctrine.orm.default_entity_manager'] = new \EntityManager53077f672c36c_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager($h, $this);
+        return $this->services['doctrine.orm.default_entity_manager'] = new \EntityManager530792b339520_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager($h, $this);
     }
 
     /**
@@ -1974,28 +1974,31 @@ class appDevDebugProjectContainer extends Container
 
         $l = new \Symfony\Component\HttpFoundation\RequestMatcher('/filiere/*');
 
-        $m = new \Symfony\Component\Security\Http\AccessMap();
-        $m->add($h, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
-        $m->add($i, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
-        $m->add($j, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
-        $m->add($k, array(0 => 'ROLE_USER'), NULL);
-        $m->add($l, array(0 => 'ROLE_ADMIN'), NULL);
+        $m = new \Symfony\Component\HttpFoundation\RequestMatcher('/responsable/*');
 
-        $n = new \Symfony\Component\Security\Http\HttpUtils($e, $e);
+        $n = new \Symfony\Component\Security\Http\AccessMap();
+        $n->add($h, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
+        $n->add($i, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
+        $n->add($j, array(0 => 'IS_AUTHENTICATED_ANONYMOUSLY'), NULL);
+        $n->add($k, array(0 => 'ROLE_USER'), NULL);
+        $n->add($l, array(0 => 'ROLE_ADMIN'), NULL);
+        $n->add($m, array(0 => 'ROLE_SUPER_ADMIN'), NULL);
 
-        $o = new \Symfony\Component\Security\Http\RememberMe\TokenBasedRememberMeServices(array(0 => $c), 'ThisTokenIsNotSoSecretChangeIt', 'main', array('lifetime' => 30000000, 'path' => '/', 'domain' => NULL, 'name' => 'REMEMBERME', 'secure' => false, 'httponly' => true, 'always_remember_me' => false, 'remember_me_parameter' => '_remember_me'), $a);
+        $o = new \Symfony\Component\Security\Http\HttpUtils($e, $e);
 
-        $p = new \Symfony\Component\Security\Http\Firewall\LogoutListener($b, $n, new \Symfony\Component\Security\Http\Logout\DefaultLogoutSuccessHandler($n, '/login'), array('csrf_parameter' => '_csrf_token', 'intention' => 'logout', 'logout_path' => '/logout'));
-        $p->addHandler(new \Symfony\Component\Security\Http\Logout\SessionLogoutHandler());
-        $p->addHandler($o);
+        $p = new \Symfony\Component\Security\Http\RememberMe\TokenBasedRememberMeServices(array(0 => $c), 'ThisTokenIsNotSoSecretChangeIt', 'main', array('lifetime' => 30000000, 'path' => '/', 'domain' => NULL, 'name' => 'REMEMBERME', 'secure' => false, 'httponly' => true, 'always_remember_me' => false, 'remember_me_parameter' => '_remember_me'), $a);
 
-        $q = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler($n, array('default_target_path' => '/redirection', 'login_path' => '/login', 'always_use_default_target_path' => false, 'target_path_parameter' => '_target_path', 'use_referer' => false));
-        $q->setProviderKey('main');
+        $q = new \Symfony\Component\Security\Http\Firewall\LogoutListener($b, $o, new \Symfony\Component\Security\Http\Logout\DefaultLogoutSuccessHandler($o, '/login'), array('csrf_parameter' => '_csrf_token', 'intention' => 'logout', 'logout_path' => '/logout'));
+        $q->addHandler(new \Symfony\Component\Security\Http\Logout\SessionLogoutHandler());
+        $q->addHandler($p);
 
-        $r = new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $g, $this->get('security.authentication.session_strategy'), $n, 'main', $q, new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($f, $n, array('login_path' => '/login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'), $a), array('check_path' => '/login_check', 'use_forward' => false, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), $a, $d, $this->get('form.csrf_provider'));
-        $r->setRememberMeServices($o);
+        $r = new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationSuccessHandler($o, array('default_target_path' => '/redirection', 'login_path' => '/login', 'always_use_default_target_path' => false, 'target_path_parameter' => '_target_path', 'use_referer' => false));
+        $r->setProviderKey('main');
 
-        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($m, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $c), 'main', $a, $d), 2 => $p, 3 => $r, 4 => new \Symfony\Component\Security\Http\Firewall\RememberMeListener($b, $o, $g, $a, $d), 5 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '53077f666b0be', $a), 6 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $m, $g, $a)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $n, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($f, $n, '/login', false), '/login', NULL, $a));
+        $s = new \Symfony\Component\Security\Http\Firewall\UsernamePasswordFormAuthenticationListener($b, $g, $this->get('security.authentication.session_strategy'), $o, 'main', $r, new \Symfony\Component\Security\Http\Authentication\DefaultAuthenticationFailureHandler($f, $o, array('login_path' => '/login', 'failure_path' => NULL, 'failure_forward' => false, 'failure_path_parameter' => '_failure_path'), $a), array('check_path' => '/login_check', 'use_forward' => false, 'username_parameter' => '_username', 'password_parameter' => '_password', 'csrf_parameter' => '_csrf_token', 'intention' => 'authenticate', 'post_only' => true), $a, $d, $this->get('form.csrf_provider'));
+        $s->setRememberMeServices($p);
+
+        return $this->services['security.firewall.map.context.main'] = new \Symfony\Bundle\SecurityBundle\Security\FirewallContext(array(0 => new \Symfony\Component\Security\Http\Firewall\ChannelListener($n, new \Symfony\Component\Security\Http\EntryPoint\RetryAuthenticationEntryPoint(80, 443), $a), 1 => new \Symfony\Component\Security\Http\Firewall\ContextListener($b, array(0 => $c), 'main', $a, $d), 2 => $q, 3 => $s, 4 => new \Symfony\Component\Security\Http\Firewall\RememberMeListener($b, $p, $g, $a, $d), 5 => new \Symfony\Component\Security\Http\Firewall\AnonymousAuthenticationListener($b, '530792b2770f1', $a), 6 => new \Symfony\Component\Security\Http\Firewall\AccessListener($b, $this->get('security.access.decision_manager'), $n, $g, $a)), new \Symfony\Component\Security\Http\Firewall\ExceptionListener($b, $this->get('security.authentication.trust_resolver'), $o, 'main', new \Symfony\Component\Security\Http\EntryPoint\FormAuthenticationEntryPoint($f, $o, '/login', false), '/login', NULL, $a));
     }
 
     /**
@@ -2021,7 +2024,7 @@ class appDevDebugProjectContainer extends Container
      */
     protected function getSecurity_RoleHierarchyService()
     {
-        return $this->services['security.role_hierarchy'] = new \Symfony\Component\Security\Core\Role\RoleHierarchy(array('ROLE_USER' => array(0 => 'ROLE_USER'), 'ROLE_ADMIN' => array(0 => 'ROLE_ADMIN'), 'ROLE_SUPER_ADMIN' => array(0 => 'ROLE_ADMIN')));
+        return $this->services['security.role_hierarchy'] = new \Symfony\Component\Security\Core\Role\RoleHierarchy(array('ROLE_USER' => array(0 => 'ROLE_USER'), 'ROLE_ADMIN' => array(0 => 'ROLE_ADMIN'), 'ROLE_SUPER_ADMIN' => array(0 => 'ROLE_SUPER_ADMIN')));
     }
 
     /**
@@ -3017,6 +3020,7 @@ class appDevDebugProjectContainer extends Container
         $instance->addPath('C:\\wamp\\www\\uitcandidature\\vendor\\symfony\\swiftmailer-bundle\\Symfony\\Bundle\\SwiftmailerBundle/Resources/views', 'Swiftmailer');
         $instance->addPath('C:\\wamp\\www\\uitcandidature\\vendor\\doctrine\\doctrine-bundle\\Doctrine\\Bundle\\DoctrineBundle/Resources/views', 'Doctrine');
         $instance->addPath('C:\\wamp\\www\\uitcandidature\\src\\mqlUIT\\CandidatureBundle/Resources/views', 'mqlUITCandidature');
+        $instance->addPath('C:\\wamp\\www\\uitcandidature\\src\\mqlUIT\\UserBundle/Resources/views', 'User');
         $instance->addPath('C:\\wamp\\www\\uitcandidature\\vendor\\friendsofsymfony\\user-bundle\\FOS\\UserBundle/Resources/views', 'FOSUser');
         $instance->addPath('C:\\wamp\\www\\uitcandidature\\src\\Acme\\DemoBundle/Resources/views', 'AcmeDemo');
         $instance->addPath('C:\\wamp\\www\\uitcandidature\\vendor\\symfony\\symfony\\src\\Symfony\\Bundle\\WebProfilerBundle/Resources/views', 'WebProfiler');
@@ -3140,7 +3144,7 @@ class appDevDebugProjectContainer extends Container
     /**
      * Gets the doctrine.orm.entity_manager service alias.
      *
-     * @return EntityManager53077f672c36c_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager An instance of the doctrine.orm.default_entity_manager service
+     * @return EntityManager530792b339520_546a8d27f194334ee012bfe64f629947b07e4919\__CG__\Doctrine\ORM\EntityManager An instance of the doctrine.orm.default_entity_manager service
      */
     protected function getDoctrine_Orm_EntityManagerService()
     {
@@ -3333,7 +3337,7 @@ class appDevDebugProjectContainer extends Container
     {
         $a = $this->get('security.user_checker');
 
-        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $a, 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'ThisTokenIsNotSoSecretChangeIt', 'main'), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('53077f666b0be')), true);
+        $this->services['security.authentication.manager'] = $instance = new \Symfony\Component\Security\Core\Authentication\AuthenticationProviderManager(array(0 => new \Symfony\Component\Security\Core\Authentication\Provider\DaoAuthenticationProvider($this->get('fos_user.user_provider.username'), $a, 'main', $this->get('security.encoder_factory'), true), 1 => new \Symfony\Component\Security\Core\Authentication\Provider\RememberMeAuthenticationProvider($a, 'ThisTokenIsNotSoSecretChangeIt', 'main'), 2 => new \Symfony\Component\Security\Core\Authentication\Provider\AnonymousAuthenticationProvider('530792b2770f1')), true);
 
         $instance->setEventDispatcher($this->get('event_dispatcher'));
 
@@ -3832,7 +3836,7 @@ class appDevDebugProjectContainer extends Container
                     0 => 'ROLE_ADMIN',
                 ),
                 'ROLE_SUPER_ADMIN' => array(
-                    0 => 'ROLE_ADMIN',
+                    0 => 'ROLE_SUPER_ADMIN',
                 ),
             ),
             'twig.class' => 'Twig_Environment',
@@ -4058,8 +4062,8 @@ class appDevDebugProjectContainer extends Container
             'jms_di_extra.cache_warmer.controller_file_blacklist' => array(
 
             ),
-            'jms_di_extra.doctrine_integration.entity_manager.file' => 'C:/wamp/www/uitcandidature/app/cache/dev/jms_diextra/doctrine/EntityManager_53077f672c36c.php',
-            'jms_di_extra.doctrine_integration.entity_manager.class' => 'EntityManager53077f672c36c_546a8d27f194334ee012bfe64f629947b07e4919\\__CG__\\Doctrine\\ORM\\EntityManager',
+            'jms_di_extra.doctrine_integration.entity_manager.file' => 'C:/wamp/www/uitcandidature/app/cache/dev/jms_diextra/doctrine/EntityManager_530792b339520.php',
+            'jms_di_extra.doctrine_integration.entity_manager.class' => 'EntityManager530792b339520_546a8d27f194334ee012bfe64f629947b07e4919\\__CG__\\Doctrine\\ORM\\EntityManager',
             'security.secured_services' => array(
 
             ),

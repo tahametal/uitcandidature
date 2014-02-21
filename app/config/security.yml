@@ -10,7 +10,7 @@ security:
     role_hierarchy:
         ROLE_USER:       ROLE_USER
         ROLE_ADMIN:       ROLE_ADMIN
-        ROLE_SUPER_ADMIN: ROLE_ADMIN
+        ROLE_SUPER_ADMIN: ROLE_SUPER_ADMIN
     
 
     access_control:
@@ -19,5 +19,6 @@ security:
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: /candidat/*, role: ROLE_USER }
         - { path: /filiere/*, role: ROLE_ADMIN }
+        - { path: /responsable/*, role: ROLE_SUPER_ADMIN }
        
      
