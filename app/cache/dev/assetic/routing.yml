@@ -2,4 +2,4 @@ _assetic:
     resource: .
     type: assetic
 _app:
-    resource: 'C:/Users/RedOne/Documents/NetBeansProjects/uitcandidature/app/config/routing_dev.yml'
+    resource: 'C:/wamp/www/UITCandidature/app/config/routing_dev.yml'

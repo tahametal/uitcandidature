@@ -1,4 +1,5 @@
 mqlUIT\CandidatureBundle\Entity\Candidat:
+  
     type: entity
     table: candidat
     fields:
@@ -69,7 +70,7 @@ mqlUIT\CandidatureBundle\Entity\Candidat:
             nullable: true
     manyToOne:
         userfos:
-            targetEntity: Userfos
+            targetEntity: \mqlUIT\UserBundle\Entity\UserFOS
             cascade: {  }
             mappedBy: null
             inversedBy: null

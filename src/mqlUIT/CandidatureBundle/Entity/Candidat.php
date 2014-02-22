@@ -75,7 +75,7 @@ class Candidat
     private $sexe;
 
     /**
-     * @var \mqlUIT\CandidatureBundle\Entity\Userfos
+     * @var \mqlUIT\UserBundle\Entity\UserFOS
      */
     private $userfos;
 
@@ -369,10 +369,10 @@ class Candidat
     /**
      * Set userfos
      *
-     * @param \mqlUIT\CandidatureBundle\Entity\Userfos $userfos
+     * @param \mqlUIT\UserBundle\Entity\UserFOS $userFOS
      * @return Candidat
      */
-    public function setUserfos(\mqlUIT\CandidatureBundle\Entity\Userfos $userfos = null)
+    public function setUserFOS(\mqlUIT\UserBundle\Entity\UserFOS $userfos = null)
     {
         $this->userfos = $userfos;
     
@@ -382,7 +382,7 @@ class Candidat
     /**
      * Get userfos
      *
-     * @return \mqlUIT\CandidatureBundle\Entity\Userfos 
+     * @return \mqlUIT\UserBundle\Entity\UserFOS
      */
     public function getUserfos()
     {

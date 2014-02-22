@@ -69,7 +69,7 @@ Candidat:
             nullable: true
     manyToOne:
         userfos:
-            targetEntity: Userfos
+            targetEntity: \mqlUIT\UserBundle\Entity\UserFOS
             cascade: {  }
             mappedBy: null
             inversedBy: null
