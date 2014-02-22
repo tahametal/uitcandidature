@@ -8,7 +8,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use mqlUIT\CandidatureBundle\Entity\Candidat;
 use mqlUIT\CandidatureBundle\Form\CandidatType;
 
-use mqlUIT\CandidatureBundle\Entity\Userfos;
+use mqlUIT\UserBundle\Entity\Userfos;
 /**
  * Candidat controller.
  *
@@ -43,11 +43,15 @@ class CandidatController extends Controller
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $usr= $this->get('security.context')->getToken()->getUser();
+            $userid = $usr->getId();
+           //$user = $em->getRepository('mqlUITCandidatureBundle:Candidat')->find($userid);
             //$fos = new Userfos();
             //$fos->setUsername($usr->getUsername());
-           
+           // echo $userid;
+           // die();
+            
             $entity->setUserfos($usr);
-           
+            ///////test
            // $form->setData($modelData);
             
             $em->persist($entity);
