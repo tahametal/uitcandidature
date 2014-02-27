@@ -44,14 +44,14 @@
 				<ul class="nav pull-right">
 					
 					<li class="">						
-						<a href="signup.html" class="">
+						<a href="{{ path('fos_user_registration_register') }}" class="">
 							Nouvelle candidature
 						</a>
 						
 					</li>
 					
 					<li class="">						
-						<a href="" class="">
+						<a href="{{ path('fos_user_security_login') }}" class="">
 							<i class="icon-chevron-left"></i>
 							Retour à l'accueil
 						</a>
@@ -85,7 +85,7 @@
 
 <!-- Text Under Box -->
 <div class="login-extra">
-	Vous avez déjà un compte ? <a href="/login">Login</a>
+	Vous avez déjà un compte ? <a href="{{ path('fos_user_security_login') }}">Login</a>
 </div>
   
 
