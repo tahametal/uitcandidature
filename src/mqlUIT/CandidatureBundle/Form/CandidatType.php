@@ -22,7 +22,10 @@ class CandidatType extends AbstractType
             ->add('nationalite')
             ->add('ville')
             ->add('pays')
-            ->add('sexe')
+            ->add('sexe', 'choice', array(
+                    'choices'   => array('m' => 'Masculin', 'f' => 'Féminin'),
+                    'required'  => TRUE,
+                )) 
             //->add('userfos')
         ;
     }
