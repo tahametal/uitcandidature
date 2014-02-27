@@ -29,10 +29,12 @@ class CandidatureController extends Controller
         ));
     }
 
+    
     /**
      * Creates a new Candidature entity.
      *
      */
+    
     public function createAction(Request $request)
     {
         $entity  = new Candidature();
@@ -41,6 +43,15 @@ class CandidatureController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            
+            $usr= $this->get('security.context')->getToken()->getUser();
+            $repository = $this->getDoctrine()->getRepository('mqlUITCandidatureBundle:Candidat');
+            $Candidat =  $repository->findOneBy(
+                            array('userfos' =>$usr->getId())
+                        ); 
+            
+           $entity->setCandidat($Candidat);
+           
             $em->persist($entity);
             $em->flush();
 

@@ -80,4 +80,9 @@ class Filiere
     {
         return $this->responsable;
     }
+    
+public function __toString()
+{
+    return (string) $this->getIntitule();
+}
 }

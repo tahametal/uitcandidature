@@ -11,8 +11,8 @@ class CandidatureType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('isvalid')
-            ->add('candidat')
+           // ->add('isvalid')
+            // ->add('candidat')
             ->add('filiere')
         ;
     }
