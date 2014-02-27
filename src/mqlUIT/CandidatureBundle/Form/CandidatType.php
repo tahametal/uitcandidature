@@ -13,7 +13,7 @@ class CandidatType extends AbstractType
         $builder
             ->add('nom')
             ->add('prenom')
-            ->add('datenaissance')
+            ->add('datenaissance','birthday')
             ->add('adresse')
             ->add('cin')
             ->add('cne')

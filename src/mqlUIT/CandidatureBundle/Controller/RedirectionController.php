@@ -10,7 +10,11 @@ class RedirectionController extends Controller
     {
         
         if ( $this->get('security.context')->isGranted('ROLE_USER')){ 
-           $url = 'candidat_new';
+            $url = 'candidat_new';
+           
+            $usr= $this->get('security.context')->getToken()->getUser();
+            $userid = $usr->getId();
+
            $repository = $this->getDoctrine()->getRepository('mqlUITCandidatureBundle:Candidat');
            $Candidat =  $repository->findOneBy(
                             array('userfos' =>$usr->getId())

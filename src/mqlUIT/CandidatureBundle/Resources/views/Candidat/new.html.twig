@@ -1,20 +1,13 @@
 {% extends '::base.html.twig' %}
-  {% block titreP -%}Candidat creation{% endblock %}
+  {% block titreP -%} Profile {% endblock %}
 {% block body -%}
   
 
     <form action="{{ path('candidat_create') }}" method="post" {{ form_enctype(form) }}>
         {{ form_widget(form) }}
         <p>
-            <button type="submit">Enregistrer</button>
+            <button type="submit" class="btn btn-large btn-primary">Enregistrer </button>
         </p>
     </form>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('candidat') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
 {% endblock %}
