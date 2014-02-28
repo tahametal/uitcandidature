@@ -11,7 +11,7 @@ class CandidatType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('nom')
+            ->add('nom','text')
             ->add('prenom')
             ->add('datenaissance','birthday')
             ->add('adresse')
@@ -23,7 +23,7 @@ class CandidatType extends AbstractType
             ->add('ville')
             ->add('pays')
             ->add('sexe', 'choice', array(
-                    'choices'   => array('m' => 'Masculin', 'f' => 'Féminin'),
+                    'choices'   => array('Masculin' => 'Masculin', 'Féminin' => 'Féminin'),
                     'required'  => TRUE,
                 )) 
             //->add('userfos')
@@ -33,7 +33,7 @@ class CandidatType extends AbstractType
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'mqlUIT\CandidatureBundle\Entity\Candidat'
+            'data_class' => 'mqlUIT\CandidatureBundle\Entity\Candidat',
         ));
     }
 

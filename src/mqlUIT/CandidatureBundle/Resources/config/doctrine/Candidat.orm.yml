@@ -14,60 +14,60 @@ mqlUIT\CandidatureBundle\Entity\Candidat:
             type: string
             length: 45
             fixed: false
-            nullable: true
+            nullable: false
         prenom:
             type: string
             length: 45
             fixed: false
-            nullable: true
+            nullable: false
         datenaissance:
-            type: datetime
-            nullable: true
+            type: date
+            nullable: false
         adresse:
             type: string
             length: 200
             fixed: false
-            nullable: true
+            nullable: false
         cin:
             type: string
             length: 45
             fixed: false
-            nullable: true
+            nullable: false
         cne:
             type: string
             length: 45
             fixed: false
-            nullable: true
+            nullable: false
         email:
             type: string
             length: 150
             fixed: false
-            nullable: true
+            nullable: false
         telephone:
             type: string
             length: 45
             fixed: false
-            nullable: true
+            nullable: false
         nationalite:
             type: string
             length: 45
             fixed: false
-            nullable: true
+            nullable: false
         ville:
             type: string
             length: 45
             fixed: false
-            nullable: true
+            nullable: false
         pays:
             type: string
             length: 45
             fixed: false
-            nullable: true
+            nullable: false
         sexe:
             type: string
-            length: 1
+            length: 10
             fixed: false
-            nullable: true
+            nullable: false
     manyToOne:
         userfos:
             targetEntity: \mqlUIT\UserBundle\Entity\UserFOS

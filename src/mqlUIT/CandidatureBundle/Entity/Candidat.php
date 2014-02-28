@@ -25,7 +25,7 @@ class Candidat
     private $prenom;
 
     /**
-     * @var \DateTime
+     * @var \Date
      */
     private $datenaissance;
 
@@ -139,7 +139,7 @@ class Candidat
     /**
      * Set datenaissance
      *
-     * @param \DateTime $datenaissance
+     * @param \Date $datenaissance
      * @return Candidat
      */
     public function setDatenaissance($datenaissance)
@@ -152,7 +152,7 @@ class Candidat
     /**
      * Get datenaissance
      *
-     * @return \DateTime 
+     * @return \Date
      */
     public function getDatenaissance()
     {

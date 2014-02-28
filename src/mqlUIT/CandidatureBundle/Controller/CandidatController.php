@@ -37,10 +37,13 @@ class CandidatController extends Controller
     public function createAction(Request $request)
     {
         $entity  = new Candidat();
-        $form = $this->createForm(new CandidatType(), $entity);
+         $form = $this->createForm(new CandidatType(), $entity);
+         //$form = $this->get('form.factory')->create(new CandidatType());
+         //$entity = $request->request->get('Candidat');
         $form->bind($request);
-
-        if ($form->isValid()) {
+        //$form->bindRequest($request);
+      // $entity = $form->getData();
+     
             $em = $this->getDoctrine()->getManager();
             $usr= $this->get('security.context')->getToken()->getUser();
             $userid = $usr->getId();
@@ -60,12 +63,14 @@ class CandidatController extends Controller
             
 
             return $this->redirect($this->generateUrl('candidat_show', array('id' => $entity->getId())));
-        }
+        
 
-        return $this->render('mqlUITCandidatureBundle:Candidat:new.html.twig', array(
+      /* 
+       }
+         return $this->render('mqlUITCandidatureBundle:Candidat:prob.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        ));
+        ));*/
     }
 
     /**
@@ -146,18 +151,18 @@ class CandidatController extends Controller
         $editForm = $this->createForm(new CandidatType(), $entity);
         $editForm->bind($request);
 
-        if ($editForm->isValid()) {
+       
             $em->persist($entity);
             $em->flush();
 
             return $this->redirect($this->generateUrl('candidat_edit', array('id' => $id)));
-        }
+      /*  }
 
         return $this->render('mqlUITCandidatureBundle:Candidat:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));
+        ));*/
     }
 
     /**
