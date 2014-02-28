@@ -22,5 +22,9 @@
         <default key="_controller">FOSUserBundle:Registration:confirmed</default>
         <requirement key="_method">GET</requirement>
     </route>
+    
+     <route id="fos_user_registration_register_Admin" pattern="/ajoutResponsable">
+        <default key="_controller">FOSUserBundle:Registration:registerAdmin</default>
+    </route>
 
 </routes>

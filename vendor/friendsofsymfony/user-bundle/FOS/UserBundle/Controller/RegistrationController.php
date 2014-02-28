@@ -149,4 +149,53 @@ class RegistrationController extends ContainerAware
     {
         return $this->container->getParameter('fos_user.template.engine');
     }
+    
+    
+    
+       public function registerAdminAction()
+    {
+        $form = $this->container->get('fos_user.registration.form');
+        $formHandler = $this->container->get('fos_user.registration.form.handler');
+        $confirmationEnabled = $this->container->getParameter('fos_user.registration.confirmation.enabled');
+
+        $process = $formHandler->process($confirmationEnabled);
+        if ($process) {
+            $user = $form->getData();
+            //$user->addRole('ROLE_ADMIN');
+            //$user->setRoles(array('ROLE_ADMIN'));
+           
+           
+            $authUser = false;
+            if ($confirmationEnabled) {
+                $this->container->get('session')->set('fos_user_send_confirmation_email/email', $user->getEmail());
+                $route = 'fos_user_registration_check_email';
+            } else {
+                $authUser = true;
+                $route = 'fos_user_security_login';
+            }
+
+           // $this->setFlash('fos_user_success', 'registration.flash.user_created');
+            $url = $this->container->get('router')->generate($route);
+            $response = new RedirectResponse($url);
+
+            if ($authUser) {
+                $this->authenticateUser($user, $response);
+            }
+            
+            $userManager = $this->container->get('fos_user.user_manager');
+            $usr = $userManager->findUserBy(array('username' => $user->getUsername()));
+            $usr->addRole('ROLE_ADMIN');
+            $userManager->updateUser($usr); 
+
+            return $response;
+        }
+
+        return $this->container->get('templating')->renderResponse('FOSUserBundle:Registration:register_Admin.html.'.$this->getEngine(), array(
+            'form' => $form->createView(),
+        ));
+    }
+    
+    
+    
+    
 }
