@@ -265,6 +265,11 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
             }
             not_candidat_delete:
 
+            // candidat_inscription2
+            if ($pathinfo === '/candidat/ins2') {
+                return array (  '_controller' => 'mqlUIT\\CandidatureBundle\\Controller\\CandidatController::inscription2Action',  '_route' => 'candidat_inscription2',);
+            }
+
         }
 
         if (0 === strpos($pathinfo, '/diplometype')) {
@@ -789,8 +794,8 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             // diplome_create
             if ($pathinfo === '/diplome/create') {
-                if ($this->context->getMethod() != 'POST') {
-                    $allow[] = 'POST';
+                if (!in_array($this->context->getMethod(), array('POST', 'GET', 'HEAD'))) {
+                    $allow = array_merge($allow, array('POST', 'GET', 'HEAD'));
                     goto not_diplome_create;
                 }
 
@@ -880,6 +885,16 @@ class appdevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
                 return $this->mergeDefaults(array_replace($matches, array('_route' => 'candidature_delete')), array (  '_controller' => 'mqlUIT\\CandidatureBundle\\Controller\\CandidatureController::deleteAction',));
             }
             not_candidature_delete:
+
+            // candidature_ins3
+            if ($pathinfo === '/candidature/ins3') {
+                return array (  '_controller' => 'mqlUIT\\CandidatureBundle\\Controller\\CandidatureController::inscription3Action',  '_route' => 'candidature_ins3',);
+            }
+
+            // candidature_deletef
+            if (preg_match('#^/candidature/(?P<id>[^/]++)/deletef$#s', $pathinfo, $matches)) {
+                return $this->mergeDefaults(array_replace($matches, array('_route' => 'candidature_deletef')), array (  '_controller' => 'mqlUIT\\CandidatureBundle\\Controller\\CandidatureController::deletefAction',));
+            }
 
         }
 

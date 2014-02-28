@@ -1,0 +1,153 @@
+{% extends '::base.html.twig' %}
+
+{% block stylesheets -%}
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/ui-lightness/jquery-ui.css" type="text/css" />  
+<link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css" media="all" />
+<link rel="stylesheet"  href="{{ asset('css/bootstrap-image-gallery.min.css') }}" type="text/css" media="all" />
+{% endblock %}
+   
+   {% block titreP -%}Etape 3 - Candidature{% endblock %}
+   
+{% block body -%}
+   <div class="span11">
+
+      		<div class="widget stacked">
+					
+				<div class="widget-header">
+					<i class="icon-check"></i>
+					Candidature
+				</div> <!-- /widget-header -->
+				
+				<div class="widget-content">
+                                     <table class="table table-bordered table-striped table-highlight">
+                                        <thead>
+            <tr>
+                <th>Candidature</th>
+                <th>Choix de candidatures</th>
+                <th>Annulation</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% set counter = 0 %}
+        {% for entity in candidatures %}
+            <tr>
+                <td><h5>{{ entity.filiere }} </h5></td>
+                <td>Formation n° {{loop.index}}</td>
+                <td>
+                <ul>
+                   
+                        <a href="{{ path('candidature_deletef', { 'id': entity.id }) }}" class="btn btn-small">
+			<i class="btn-icon-only icon-remove"></i>										
+			</a>
+                    
+                    
+                </ul>
+                </td>
+            </tr>
+            {% set counter = loop.index %}
+        {% endfor %}
+        </tbody>
+                                    </table>
+                                    
+                                    {% if counter < 3 %}
+				<a data-toggle="modal" href="#modal-candidature" class="btn btn-small btn-success" href="javascript:;" style="float: right;">
+
+                                    Ajouter une Candidature
+
+        </a>
+					{% endif %}
+					
+					
+                                </div> <!-- /widget-content -->
+					
+			</div> <!-- /widget -->					
+			
+</div>
+   
+   
+   
+   
+   
+   
+   
+   
+   <div id="modal-candidature" class="modal hide fade" tabindex="-1">
+        <form action="{{ path('candidature_create') }}" method="post" {{ form_enctype(formcand) }}>
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">&times;</a>
+        <h3 class="modal-title">Ajouter une Candidature</h3>
+    </div>
+    <div class="modal-body">
+      
+        
+        <p>
+          {{ form_widget(formcand) }}
+        </p>
+    </div>
+        
+        
+    <div class="modal-footer">
+         
+        <table><tr><td ><button class="btn btn-success"  type="submit">Ajouter Candidature</button> </td>
+                <td> 
+                      
+            
+           
+          
+ 
+      </td></tr></table>
+      
+      
+        
+      
+    </div>
+       </form> 
+</div>
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+   
+
+{% endblock %}
+   
+   
+{% block javascripts -%}
+    <script src="{{ asset('js/bootstrap-image-gallery.min.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/load-image.min.js') }}"></script>
+     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"></script>
+       
+       
+
+{% endblock %}

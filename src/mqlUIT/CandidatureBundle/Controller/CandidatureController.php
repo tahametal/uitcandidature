@@ -55,7 +55,7 @@ class CandidatureController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('candidature_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('candidature_ins3'));
         }
 
         return $this->render('mqlUITCandidatureBundle:Candidature:new.html.twig', array(
@@ -194,4 +194,50 @@ class CandidatureController extends Controller
             ->getForm()
         ;
     }
+    
+     public function inscription3Action()
+    {
+        $usr= $this->get('security.context')->getToken()->getUser();
+        $repository = $this->getDoctrine()->getRepository('mqlUITCandidatureBundle:Candidat'); 
+        $Candidat = $repository->findOneBy( array('userfos' =>$usr->getId()) );
+        
+        $em = $this->getDoctrine()->getEntityManager();
+        $qb = $em->createQueryBuilder();
+        $qb->select('c')
+               ->from('mqlUITCandidatureBundle:Candidature','c')
+               ->where('c.candidat = :id')
+                 ->setParameter('id', $Candidat) ;
+        
+               $query=$qb->getQuery();
+               $candidatures = $query->getResult();
+               $candidature = new Candidature();
+               $formcand   = $this->createForm(new \mqlUIT\CandidatureBundle\Form\CandidatureType(), $candidature);
+    
+       return $this->render('mqlUITCandidatureBundle:Candidature:ins3.html.twig', array(           
+            'formcand'   => $formcand->createView(),
+            'candidatures' => $candidatures,
+            
+        ));
+    }
+    
+    
+        public function deletefAction($id)
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('mqlUITCandidatureBundle:Candidature')->find($id);
+         if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Candidature entity.');
+        }
+        $em->remove($entity);
+        $em->flush();
+        
+      
+
+         return $this->redirect($this->generateUrl('candidature_ins3'));
+       
+
+        
+    }
+    
 }

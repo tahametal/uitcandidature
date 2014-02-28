@@ -28,3 +28,11 @@ candidature_delete:
     pattern:  /candidature/{id}/delete
     defaults: { _controller: "mqlUITCandidatureBundle:Candidature:delete" }
     requirements: { _method: post|delete }
+    
+candidature_ins3:
+    pattern:  /candidature/ins3
+    defaults: { _controller: "mqlUITCandidatureBundle:Candidature:inscription3" }
+    
+candidature_deletef:
+    pattern:  /candidature/{id}/deletef
+    defaults: { _controller: "mqlUITCandidatureBundle:Candidature:deletef" }
