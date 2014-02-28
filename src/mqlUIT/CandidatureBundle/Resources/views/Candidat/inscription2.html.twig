@@ -23,6 +23,8 @@
                                             <th>Date Début</th>
                                             <th>Date Fin</th>
                                             <th>Type</th>
+                                            <th>Modifer</th>
+                                            <th>Supprimer</th>
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -32,6 +34,10 @@
                                                 <td>{{exp.datedebut|date('Y-m-d ')}}</td>
                                                 <td>{{exp.datefin|date('Y-m-d')}}</td>
                                                 <td>{{exp.type.type}}</td>
+                                                <td><a  data-toggle="modal" class="open-exp" href="#modal-exp2"
+                                                        data-id="{{ exp.id ~";" ~ exp.intitule ~ ";" ~ exp.datedebut|date('Y-m-d ') ~ ";" ~ exp.datefin|date('Y-m-d ') ~ ";" ~ exp.description ~ ";" ~ exp.type.type  }}">Détails</a></td>
+                                                        <td><a class="btn btn-small" href="{{ path('experience_supprimer', { 'id': exp.id }) }}"> <i class="btn-icon-only icon-remove"></i></a></td>
+                                            </tr>   
                                             </tr>           
                                             {% endfor %}
 
@@ -53,6 +59,12 @@
 			</div> <!-- /widget -->					
 			
 </div>
+
+
+
+
+
+
 <div class="span11">
 
       		<div class="widget stacked">
@@ -70,6 +82,9 @@
                                             <th>Date obtention</th>
                                             <th>Etablisement</th>
                                             <th>Type Diplome</th>
+                                            <th>Modifer</th>
+                                             <th>Supprimer</th>
+                                          
                                         </tr>
                                         </thead>
                                         <tbody>
@@ -79,6 +94,10 @@
                                                 <td>{{dip.dateobtention|date('Y-m-d ')}}</td>
                                                 <td>{{dip.etablissement}}</td>
                                                 <td>{{dip.diplometype.type}}</td>
+                                                <td><a 
+                                                        data-toggle="modal" class="open-dip" href="#modal-dip2"
+                                                        data-id="{{ dip.id ~";" ~ dip.intitule ~ ";" ~ dip.dateinscription|date('Y-m-d ') ~ ";" ~ dip.dateobtention|date('Y-m-d ') ~ ";" ~ dip.note ~ ";" ~ dip.mention ~ ";" ~ dip.etablissement ~ ";" ~ dip.ville ~ ";"  ~ dip.diplometype.type  }}">Détails</a></td>
+                                                        <td><a class="btn btn-small" href="{{ path('diplome_supprimer', { 'id': dip.id }) }}"> <i class="btn-icon-only icon-remove"></i></a></td>
                                             </tr>           
                                             {% endfor %}
                                            
@@ -88,7 +107,62 @@
                                     </table>
 				<a data-toggle="modal" href="#modal-dip" class="btn btn-small btn-success" href="javascript:;" style="float: right;">
 
-                                    Ajouter une Experience
+                                    Ajouter une Formation
+
+        </a>
+					
+					
+					
+                                </div> <!-- /widget-content -->
+					
+			</div> <!-- /widget -->					
+			
+</div>
+
+
+
+
+<div class="span11">
+
+      		<div class="widget stacked">
+					
+				<div class="widget-header">
+					<i class="icon-check"></i>
+					Note Semestre
+				</div> <!-- /widget-header -->
+				
+				<div class="widget-content">
+                                     <table class="table table-bordered table-striped table-highlight">
+                                        <thead>
+                                        <tr>
+                                            <th>Semestre</th>
+                                            <th>Note</th>
+                                            <th>Rattrapage</th>
+                                            
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for note in notes %}
+                                            <tr>
+                                                <td>{{note.semestre.semestre }}</td>
+                                                <td>{{note.note}}</td>
+                                                <td>{{note.hasrattrapage}}</td>
+                                                
+                                                <td><a  data-toggle="modal" class="open-exp" href="#modal-exp2"
+                                                        data-id="{{ note.id ~";" ~ note.semestre.semestre ~ ";" ~ note.note ~ ";" ~ note.hasrattrapage}}">Détails</a></td>
+                                                        <td><a class="btn btn-small" href="{{ path('experience_supprimer', { 'id': exp.id }) }}"> <i class="btn-icon-only icon-remove"></i></a></td>
+                                            </tr>   
+                                            </tr>           
+                                            {% endfor %}
+
+                                           
+                                            
+
+                                        </tbody>
+                                    </table>
+				<a data-toggle="modal" href="#modal-note" class="btn btn-small btn-success" href="javascript:;" style="float: right;">
+
+                                    Ajouter une Note Semetre
 
         </a>
 					
@@ -119,20 +193,14 @@
     <div class="modal-footer">
          
         <table><tr><td ><button class="btn btn-success"  type="submit">Ajouter Expérience</button> </td>
-                <td> 
-                      
-            
-           
-          
- 
-      </td></tr></table>
-      
-      
-        
-      
-    </div>
+               </tr></table>
+     </div>
        </form> 
 </div>
+
+
+
+
 <div id="modal-dip" class="modal hide fade" tabindex="-1">
   <form action="{{ path('diplome_create') }}" method="post" {{ form_enctype(formdip) }}>
     <div class="modal-header">
@@ -146,24 +214,134 @@
           
         </p>
     </div>
+     
+    <div class="modal-footer">
+         
+        <table><tr><td><button class="btn btn-success" type="submit">Ajouter Diplome</button></td></tr></table> 
+    </div>
+   </form>
+</div>
+<div id="modal-note" class="modal hide fade" tabindex="-1">
+      <form action="{{ path('detailsemestre_create') }}" method="post" {{ form_enctype(formnote) }}>
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">&times;</a>
+        <h3 class="modal-title">Ajouter une note semestre</h3>
+    </div>
+    <div class="modal-body">
+      
+        
+        <p>
+          {{ form_widget(formnote) }}
+        </p>
+    </div>
         
         
     <div class="modal-footer">
          
-        <table><tr><td >    <button class="btn btn-success" type="submit">Ajouter Diplome</button></td>
-                <td> 
-            
-           
-          
- 
-      </td></tr></table>
-      
-      
-        
-      
-    </div>
-        </form>
+        <table><tr><td ><button class="btn btn-success"  type="submit">Ajouter une note</button> </td>
+               </tr></table>
+     </div>
+       </form> 
 </div>
+
+<div id="modal-dip2" class="modal hide fade" tabindex="-1">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">&times;</a>
+        <h3 class="modal-title">Détails Diplome</h3>
+    </div>
+    <div class="modal-body">
+  <center>
+
+     <table class="modal-form">
+        
+        <tbody>
+                <th >Intitulé:</th>
+                <td id="dip_int"></td>
+            </tr>
+            <tr>
+                <th>Date Inscription:</th>
+                <td id="dip_din"></td>
+            </tr>
+            <tr>
+                <th>Date Obtention:</th>
+                <td id="dip_dob"></td>
+            </tr>
+            <tr>
+                <th>Note:</th>
+                <td id="dip_note"></td>
+            </tr>
+            <tr>
+                <th>Mention:</th>
+                <td id="dip_men"></td>
+            </tr>
+            <tr>
+                <th>Etablissement:</th>
+                <td id="dip_eta"></td>
+            </tr>
+            
+            <tr>
+                <th>Ville :</th>
+                <td id="dip_ville"></td>
+            </tr>
+            <tr>
+                <th>Type Diplome :</th>
+                <td id="dip_type"></td>
+            </tr>
+            
+            
+            
+       
+        </tbody>
+    </table>
+   </center>
+    </div>
+<div id="modal-exp2" class="modal hide fade" tabindex="-1">
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">&times;</a>
+        <h3 class="modal-title">Détails Experience</h3>
+    </div>
+    <div class="modal-body">
+
+     <table class="modal-form">
+        
+        <tbody>
+                <th >Intitulé:</th>
+                <td id="exp_int"></td>
+            </tr>
+            <tr>
+                <th>Date Début:</th>
+                <td id="exp_dd"></td>
+            </tr>
+            <tr>
+                <th>Date Fin:</th>
+                <td id="exp_df"></td>
+            </tr>
+            <tr>
+                <th>Description:</th>
+                <td id="exp_des"></td>
+            </tr>
+            <tr>
+                <th>Type:</th>
+                <td id="exp_typ"></td>
+            </tr>
+            
+            
+            
+            
+       
+        </tbody>
+    </table>
+   </center>
+    </div>
+    <div class="modal-footer">
+         
+        <table><tr><td><a id="btn_modif_exp" class="btn btn-success" type="submit">Modifier les données</a></td></tr></table> 
+    </div>
+
+</div>
+
+
+
 
     
 {% endblock %}
@@ -176,5 +354,91 @@
          <script>
             $("form input.date").datepicker();
         </script>
+  <script type="text/javascript">
+       $(document).on("click", ".open-dip", function (e) {
+           e.preventDefault();
+     var myBookId = $(this).data('id');
+   //  $(".modal-body #bookId").val( myBookId );
+     
+     var myArray = myBookId.toString().split(';');
+     
+     
+     
+     //traitement
+   //  $('#img_etd').attr('style','float: left;border-radius:5px;');
+     //$('#img_etd').attr('src','/TrombinoEtudiant/web/image/' + myArray[6]);
+     //$('#prenom_etd').append(myArray[2]);
+     $('#dip_int').removeData();
+     $('#dip_din').removeData();
+     $('#dip_dop').removeData();
+     $('#dip_note').removeData();
+     $('#dip_men').removeData();
+     $('#dip_eta').removeData();
+     $('#dip_ville').removeData();
+     $('#dip_type').removeData();
+      
+     $('#dip_int').text(myArray[1]);
+     $('#dip_din').text(myArray[2]);
+     $('#dip_dob').text(myArray[3]);
+     $('#dip_note').text(myArray[4]);
+     $('#dip_men').text(myArray[5]);
+     $('#dip_eta').text(myArray[6]);
+     $('#dip_ville').text(myArray[7]);
+     $('#dip_type').text(myArray[8]);
+     
+     
+     $('#btn_modif_dip').attr('href','../diplome/' + myArray[0] +'/edit');
+      $('#btn_modif_dip').text('modifier les infos du ' + myArray[1]);
 
+
+    //  $('#btn_modif').text('modifier les infos de ' + myArray[1] + ' ' +myArray[2]);
+
+
+
+     // As pointed out in comments, 
+     // it is superfluous to have to manually call the modal.
+     // $('#addBookDialog').modal('show');
+});
+
+$(document).on("click", ".open-exp", function (e) {
+           e.preventDefault();
+     var myBookId2 = $(this).data('id');
+   //  $(".modal-body #bookId").val( myBookId );
+     
+     var myArray2 = myBookId2.toString().split(';');
+     
+     
+     
+     //traitement
+   //  $('#img_etd').attr('style','float: left;border-radius:5px;');
+     //$('#img_etd').attr('src','/TrombinoEtudiant/web/image/' + myArray[6]);
+     //$('#prenom_etd').append(myArray[2]);
+     $('#exp_int').removeData();
+     $('#exp_dd').removeData();
+     $('#exp_df').removeData();
+     $('#exp_des').removeData();
+     $('#exp_typ').removeData();
+    
+      
+     $('#exp_int').text(myArray2[1]);
+     $('#exp_dd').text(myArray2[2]);
+     $('#exp_df').text(myArray2[3]);
+     $('#exp_des').text(myArray2[4]);
+     $('#exp_typ').text(myArray2[5]);
+    
+     
+     
+     $('#btn_modif_exp').attr('href','../experience/' + myArray2[0] +'/edit');
+      $('#btn_modif_exp').text('modifier les infos du ' + myArray2[1]);
+
+
+    //  $('#btn_modif').text('modifier les infos de ' + myArray[1] + ' ' +myArray[2]);
+
+
+
+     // As pointed out in comments, 
+     // it is superfluous to have to manually call the modal.
+     // $('#addBookDialog').modal('show');
+});
+   </script>
 {% endblock %}

@@ -138,8 +138,7 @@ class DiplomeController extends Controller
         if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
-
-            return $this->redirect($this->generateUrl('diplome_edit', array('id' => $id)));
+        return $this->redirect($this->generateUrl('candidat_inscription2'));
         }
 
         return $this->render('mqlUITCandidatureBundle:Diplome:edit.html.twig', array(
@@ -158,11 +157,14 @@ class DiplomeController extends Controller
         $form = $this->createDeleteForm($id);
         $form->bind($request);
 
+                
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $entity = $em->getRepository('mqlUITCandidatureBundle:Diplome')->find($id);
-
+                
             if (!$entity) {
+                 die();
+                
                 throw $this->createNotFoundException('Unable to find Diplome entity.');
             }
 
@@ -170,7 +172,7 @@ class DiplomeController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('diplome'));
+        return $this->redirect($this->generateUrl('candidat_inscription2'));
     }
 
     /**
@@ -187,4 +189,11 @@ class DiplomeController extends Controller
             ->getForm()
         ;
     }
+    public function supprimerAction($id) 
+            { $em = $this->getDoctrine()->getManager(); 
+              $entity = $em->getRepository('mqlUITCandidatureBundle:Diplome')->find($id);
+            if (!$entity) 
+                { throw $this->createNotFoundException('Unable mùlùmlùto find Candidature entity.'); }
+                $em->remove($entity); $em->flush();
+                return $this->redirect($this->generateUrl('candidat_inscription2')); }
 }

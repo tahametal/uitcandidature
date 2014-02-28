@@ -186,4 +186,11 @@ class ExperienceController extends Controller
             ->getForm()
         ;
     }
+    public function supprimerAction($id) 
+            { $em = $this->getDoctrine()->getManager(); 
+              $entity = $em->getRepository('mqlUITCandidatureBundle:Experience')->find($id);
+            if (!$entity) 
+                { throw $this->createNotFoundException(' un too find Candidature entity.'); }
+                $em->remove($entity); $em->flush();
+                return $this->redirect($this->generateUrl('candidat_inscription2')); }
 }

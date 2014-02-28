@@ -28,3 +28,6 @@ experience_delete:
     pattern:  /experience/{id}/delete
     defaults: { _controller: "mqlUITCandidatureBundle:Experience:delete" }
     requirements: { _method: post|delete }
+experience_supprimer:
+    pattern:  /diplome/{id}/supprimer
+    defaults: { _controller: "mqlUITCandidatureBundle:Experience:supprimer" }

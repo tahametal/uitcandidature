@@ -14,7 +14,6 @@ class DetailSemestreType extends AbstractType
             ->add('note')
             ->add('hasrattrapage')
             ->add('semestre')
-            ->add('candidat')
         ;
     }
 

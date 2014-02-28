@@ -27,4 +27,8 @@ diplome_update:
 diplome_delete:
     pattern:  /diplome/{id}/delete
     defaults: { _controller: "mqlUITCandidatureBundle:Diplome:delete" }
-    requirements: { _method: post|delete }
+    requirements: { _method: post|delete|get }
+diplome_supprimer:
+    pattern:  /diplome/{id}/supprimer
+    defaults: { _controller: "mqlUITCandidatureBundle:Diplome:supprimer" }
+    

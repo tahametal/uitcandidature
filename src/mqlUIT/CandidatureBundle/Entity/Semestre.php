@@ -52,4 +52,7 @@ class Semestre
     {
         return $this->semestre;
     }
+      public function __toString(){
+        return $this->getSemestre();
+	}
 }

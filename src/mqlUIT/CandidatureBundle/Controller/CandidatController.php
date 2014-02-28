@@ -212,6 +212,7 @@ class CandidatController extends Controller
         $em = $this->getDoctrine()->getEntityManager();
         $qb = $em->createQueryBuilder();
         $qbdip = $em->createQueryBuilder();
+        $qbnote = $em->createQueryBuilder();
         $qb->select('e')
                ->from('mqlUITCandidatureBundle:Experience','e')
                ->where('e.candidat = :id')
@@ -226,17 +227,28 @@ class CandidatController extends Controller
                ;
                $querydip=$qbdip->getQuery();
                $diplomes = $querydip->getResult();
+         $qbnote->select('d')
+               ->from('mqlUITCandidatureBundle:DetailSemestre','d')
+               ->where('d.candidat = :id')
+                 ->setParameter('id', $Candidat)
+               ;
+               $querynote=$qbnote->getQuery();
+               $notes = $querynote->getResult();
         $experience = new Experience();
+        $note = new \mqlUIT\CandidatureBundle\Entity\DetailSemestre();
         $diplome = new \mqlUIT\CandidatureBundle\Entity\Diplome();
         $formexp   = $this->createForm(new ExperienceType(), $experience);
         $formdip   = $this->createForm(new \mqlUIT\CandidatureBundle\Form\DiplomeType(), $diplome);
-
+        $formnote   = $this->createForm(new \mqlUIT\CandidatureBundle\Form\DetailSemestreType(), $note);
+        
         return $this->render('mqlUITCandidatureBundle:Candidat:inscription2.html.twig', array(
            
             'formdip'   => $formdip->createView(),
             'formexp'   => $formexp->createView(),
+            'formnote'   => $formnote->createView(),
             'experiences' => $experiences,
             'diplomes' => $diplomes,
+            'notes' => $notes,
         ));
     }
 }

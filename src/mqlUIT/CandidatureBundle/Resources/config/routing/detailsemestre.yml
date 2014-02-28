@@ -13,7 +13,7 @@ detailsemestre_new:
 detailsemestre_create:
     pattern:  /detailsemestre/create
     defaults: { _controller: "mqlUITCandidatureBundle:DetailSemestre:create" }
-    requirements: { _method: post }
+    requirements: { _method: post|get }
 
 detailsemestre_edit:
     pattern:  /detailsemestre/{id}/edit
