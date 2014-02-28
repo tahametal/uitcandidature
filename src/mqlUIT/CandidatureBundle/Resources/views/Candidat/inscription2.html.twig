@@ -1,0 +1,180 @@
+{% extends '::base.html.twig' %}
+{% block stylesheets -%}
+  <link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/ui-lightness/jquery-ui.css" type="text/css" />  
+<link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css" media="all" />
+   <link rel="stylesheet"  href="{{ asset('css/bootstrap-image-gallery.min.css') }}" type="text/css" media="all" />
+{% endblock %}
+{% block titreP -%}Etape 2 - Expériences et Formation{% endblock %}
+{% block body -%}
+   <div class="span11">
+
+      		<div class="widget stacked">
+					
+				<div class="widget-header">
+					<i class="icon-check"></i>
+					Expériences
+				</div> <!-- /widget-header -->
+				
+				<div class="widget-content">
+                                     <table class="table table-bordered table-striped table-highlight">
+                                        <thead>
+                                        <tr>
+                                            <th>Intitulé</th>
+                                            <th>Date Début</th>
+                                            <th>Date Fin</th>
+                                            <th>Type</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for exp in experiences %}
+                                            <tr>
+                                                <td>{{exp.intitule }}</td>
+                                                <td>{{exp.datedebut|date('Y-m-d ')}}</td>
+                                                <td>{{exp.datefin|date('Y-m-d')}}</td>
+                                                <td>{{exp.type.type}}</td>
+                                            </tr>           
+                                            {% endfor %}
+
+                                           
+                                            
+
+                                        </tbody>
+                                    </table>
+				<a data-toggle="modal" href="#modal-exp" class="btn btn-small btn-success" href="javascript:;" style="float: right;">
+
+                                    Ajouter une Experience
+
+        </a>
+					
+					
+					
+                                </div> <!-- /widget-content -->
+					
+			</div> <!-- /widget -->					
+			
+</div>
+<div class="span11">
+
+      		<div class="widget stacked">
+					
+				<div class="widget-header">
+					<i class="icon-check"></i>
+					Formations
+				</div> <!-- /widget-header -->
+				
+				<div class="widget-content">
+                                     <table class="table table-bordered table-striped table-highlight">
+                                        <thead>
+                                        <tr>
+                                            <th>Intitulé</th>
+                                            <th>Date obtention</th>
+                                            <th>Etablisement</th>
+                                            <th>Type Diplome</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for dip in diplomes %}
+                                            <tr>
+                                                <td>{{dip.intitule }}</td>
+                                                <td>{{dip.dateobtention|date('Y-m-d ')}}</td>
+                                                <td>{{dip.etablissement}}</td>
+                                                <td>{{dip.diplometype.type}}</td>
+                                            </tr>           
+                                            {% endfor %}
+                                           
+                                            
+
+                                        </tbody>
+                                    </table>
+				<a data-toggle="modal" href="#modal-dip" class="btn btn-small btn-success" href="javascript:;" style="float: right;">
+
+                                    Ajouter une Experience
+
+        </a>
+					
+					
+					
+                                </div> <!-- /widget-content -->
+					
+			</div> <!-- /widget -->					
+			
+</div>
+    
+
+<div id="modal-exp" class="modal hide fade" tabindex="-1">
+      <form action="{{ path('experience_create') }}" method="post" {{ form_enctype(formexp) }}>
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">&times;</a>
+        <h3 class="modal-title">Ajouter une experience</h3>
+    </div>
+    <div class="modal-body">
+      
+        
+        <p>
+          {{ form_widget(formexp) }}
+        </p>
+    </div>
+        
+        
+    <div class="modal-footer">
+         
+        <table><tr><td ><button class="btn btn-success"  type="submit">Ajouter Expérience</button> </td>
+                <td> 
+                      
+            
+           
+          
+ 
+      </td></tr></table>
+      
+      
+        
+      
+    </div>
+       </form> 
+</div>
+<div id="modal-dip" class="modal hide fade" tabindex="-1">
+  <form action="{{ path('diplome_create') }}" method="post" {{ form_enctype(formdip) }}>
+    <div class="modal-header">
+        <a class="close" data-dismiss="modal">&times;</a>
+        <h3 class="modal-title">Ajouter une Formation</h3>
+    </div>
+    <div class="modal-body">
+      
+        {{ form_widget(formdip) }}
+        <p>
+          
+        </p>
+    </div>
+        
+        
+    <div class="modal-footer">
+         
+        <table><tr><td >    <button class="btn btn-success" type="submit">Ajouter Diplome</button></td>
+                <td> 
+            
+           
+          
+ 
+      </td></tr></table>
+      
+      
+        
+      
+    </div>
+        </form>
+</div>
+
+    
+{% endblock %}
+{% block javascripts -%}
+    <script src="{{ asset('js/bootstrap-image-gallery.min.js') }}"></script>
+    <script src="{{ asset('js/main.js') }}"></script>
+    <script src="{{ asset('js/load-image.min.js') }}"></script>
+     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"></script>
+       
+         <script>
+            $("form input.date").datepicker();
+        </script>
+
+{% endblock %}

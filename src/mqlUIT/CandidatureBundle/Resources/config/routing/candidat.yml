@@ -28,3 +28,6 @@ candidat_delete:
     pattern:  /candidat/{id}/delete
     defaults: { _controller: "mqlUITCandidatureBundle:Candidat:delete" }
     requirements: { _method: post|delete }
+candidat_inscription2:
+    pattern:  /candidat/ins2
+    defaults: { _controller: "mqlUITCandidatureBundle:Candidat:inscription2" }

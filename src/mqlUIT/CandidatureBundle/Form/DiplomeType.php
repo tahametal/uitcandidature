@@ -12,13 +12,22 @@ class DiplomeType extends AbstractType
     {
         $builder
             ->add('intitule')
-            ->add('dateinscription')
-            ->add('dateobtention')
+            ->add('dateinscription', 'date', array(
+                                                'widget' => 'single_text',
+                                                'input' => 'datetime',
+                                                'format' => 'dd/MM/yyyy',
+                                                'attr' => array('class' => 'date'),
+                                                ))
+            ->add('dateobtention', 'date', array(
+                                                'widget' => 'single_text',
+                                                'input' => 'datetime',
+                                                'format' => 'dd/MM/yyyy',
+                                                'attr' => array('class' => 'date'),
+                                                ))
             ->add('note')
             ->add('mention')
             ->add('etablissement')
             ->add('ville')
-            ->add('candidat')
             ->add('diplometype')
         ;
     }

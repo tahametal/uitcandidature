@@ -35,16 +35,20 @@ class DiplomeController extends Controller
      */
     public function createAction(Request $request)
     {
+        $usr= $this->get('security.context')->getToken()->getUser();
+        $repository = $this->getDoctrine()->getRepository('mqlUITCandidatureBundle:Candidat'); 
+        $Candidat = $repository->findOneBy( array('userfos' =>$usr->getId()) );
         $entity  = new Diplome();
         $form = $this->createForm(new DiplomeType(), $entity);
         $form->bind($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+             $entity->setCandidat($Candidat);
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('diplome_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('candidat_inscription2'));
         }
 
         return $this->render('mqlUITCandidatureBundle:Diplome:new.html.twig', array(

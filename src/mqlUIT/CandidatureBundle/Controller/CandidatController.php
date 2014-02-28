@@ -7,7 +7,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
 use mqlUIT\CandidatureBundle\Entity\Candidat;
 use mqlUIT\CandidatureBundle\Form\CandidatType;
-
+use mqlUIT\CandidatureBundle\Form\ExperienceType;
+use mqlUIT\CandidatureBundle\Entity\Experience;
 use mqlUIT\UserBundle\Entity\Userfos;
 /**
  * Candidat controller.
@@ -202,5 +203,40 @@ class CandidatController extends Controller
             ->add('id', 'hidden')
             ->getForm()
         ;
+    }
+    public function inscription2Action()
+    {
+        $usr= $this->get('security.context')->getToken()->getUser();
+        $repository = $this->getDoctrine()->getRepository('mqlUITCandidatureBundle:Candidat'); 
+        $Candidat = $repository->findOneBy( array('userfos' =>$usr->getId()) );
+        $em = $this->getDoctrine()->getEntityManager();
+        $qb = $em->createQueryBuilder();
+        $qbdip = $em->createQueryBuilder();
+        $qb->select('e')
+               ->from('mqlUITCandidatureBundle:Experience','e')
+               ->where('e.candidat = :id')
+                 ->setParameter('id', $Candidat)
+               ;
+               $query=$qb->getQuery();
+               $experiences = $query->getResult();
+        $qbdip->select('d')
+               ->from('mqlUITCandidatureBundle:Diplome','d')
+               ->where('d.candidat = :id')
+                 ->setParameter('id', $Candidat)
+               ;
+               $querydip=$qbdip->getQuery();
+               $diplomes = $querydip->getResult();
+        $experience = new Experience();
+        $diplome = new \mqlUIT\CandidatureBundle\Entity\Diplome();
+        $formexp   = $this->createForm(new ExperienceType(), $experience);
+        $formdip   = $this->createForm(new \mqlUIT\CandidatureBundle\Form\DiplomeType(), $diplome);
+
+        return $this->render('mqlUITCandidatureBundle:Candidat:inscription2.html.twig', array(
+           
+            'formdip'   => $formdip->createView(),
+            'formexp'   => $formexp->createView(),
+            'experiences' => $experiences,
+            'diplomes' => $diplomes,
+        ));
     }
 }

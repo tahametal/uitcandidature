@@ -35,24 +35,27 @@ class ExperienceController extends Controller
      */
     public function createAction(Request $request)
     {
+      $usr= $this->get('security.context')->getToken()->getUser();
+        $userid = $usr->getId();
+        $repository = $this->getDoctrine()->getRepository('mqlUITCandidatureBundle:Candidat'); 
+        $Candidat = $repository->findOneBy( array('userfos' =>$usr->getId()) );
+      
         $entity  = new Experience();
         $form = $this->createForm(new ExperienceType(), $entity);
         $form->bind($request);
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $entity->setCandidat($Candidat);
             $em->persist($entity);
             $em->flush();
+             return $this->redirect($this->generateUrl('candidat_inscription2'));
+           // $this->redirect($request->headers->get('referer'));
 
             return $this->redirect($this->generateUrl('experience_show', array('id' => $entity->getId())));
-        }
-
-        return $this->render('mqlUITCandidatureBundle:Experience:new.html.twig', array(
-            'entity' => $entity,
-            'form'   => $form->createView(),
-        ));
+        
     }
-
+    }
     /**
      * Displays a form to create a new Experience entity.
      *

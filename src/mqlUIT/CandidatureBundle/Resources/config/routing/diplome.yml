@@ -13,7 +13,7 @@ diplome_new:
 diplome_create:
     pattern:  /diplome/create
     defaults: { _controller: "mqlUITCandidatureBundle:Diplome:create" }
-    requirements: { _method: post }
+    requirements: { _method: post|get }
 
 diplome_edit:
     pattern:  /diplome/{id}/edit

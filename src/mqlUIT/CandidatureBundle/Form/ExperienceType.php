@@ -12,11 +12,20 @@ class ExperienceType extends AbstractType
     {
         $builder
             ->add('intitule')
-            ->add('datedebut')
-            ->add('datefin')
+            ->add('datedebut', 'date', array(
+                                                'widget' => 'single_text',
+                                                'input' => 'datetime',
+                                                'format' => 'dd/MM/yyyy',
+                                                'attr' => array('class' => 'date'),
+                                                ))
+            ->add('datefin', 'date', array(
+                                                'widget' => 'single_text',
+                                                'input' => 'datetime',
+                                                'format' => 'dd/MM/yyyy',
+                                                'attr' => array('class' => 'date'),
+                                                ))
             ->add('description')
             ->add('type')
-            ->add('candidat')
         ;
     }
 
