@@ -9,6 +9,11 @@ mqlUIT\CandidatureBundle\Entity\Filiere:
             nullable: false
             generator:
                 strategy: IDENTITY
+        grade:
+            type: string
+            length: 1
+            fixed: false
+            nullable: true
         intitule:
             type: string
             length: 200

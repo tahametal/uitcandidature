@@ -197,27 +197,58 @@ class CandidatureController extends Controller
     
      public function inscription3Action()
     {
+         
         $usr= $this->get('security.context')->getToken()->getUser();
         $repository = $this->getDoctrine()->getRepository('mqlUITCandidatureBundle:Candidat'); 
         $Candidat = $repository->findOneBy( array('userfos' =>$usr->getId()) );
         
-        $em = $this->getDoctrine()->getEntityManager();
-        $qb = $em->createQueryBuilder();
-        $qb->select('c')
-               ->from('mqlUITCandidatureBundle:Candidature','c')
-               ->where('c.candidat = :id')
-                 ->setParameter('id', $Candidat) ;
-        
-               $query=$qb->getQuery();
-               $candidatures = $query->getResult();
-               $candidature = new Candidature();
-               $formcand   = $this->createForm(new \mqlUIT\CandidatureBundle\Form\CandidatureType1($Candidat), $candidature);
+   
+      
+$repository2 = $this->getDoctrine()
+->getManager()
+->getRepository('mqlUITCandidatureBundle:DetailSemestre');
+
+$listesemestres = $repository2->findByCandidat($Candidat);
+$nb=count($listesemestres);
+
+
+ $em = $this->getDoctrine()->getEntityManager();
+            $qb = $em->createQueryBuilder();
+
+            $qb->select('c')
+            ->from('mqlUITCandidatureBundle:Candidature','c')
+            ->where('c.candidat = :id')
+            ->setParameter('id', $Candidat) ;
+
+            $query=$qb->getQuery();
+            $candidatures = $query->getResult();
+            $candidature = new Candidature();
+            $t1=1;
+            $t2=2;
+if ($nb < 4) {
+    return $this->redirect($this->generateUrl('candidature_ins2'));
+}
+else if ($nb >= 4 && $nb < 6)
+{
+         $formcand   = $this->createForm(new \mqlUIT\CandidatureBundle\Form\CandidatureType1($Candidat,$t1), $candidature);
     
        return $this->render('mqlUITCandidatureBundle:Candidature:ins3.html.twig', array(           
             'formcand'   => $formcand->createView(),
-            'candidatures' => $candidatures,
-            
+            'candidatures' => $candidatures,           
+        )); 
+}else {
+          $formcand   = $this->createForm(new \mqlUIT\CandidatureBundle\Form\CandidatureType1($Candidat,$t2), $candidature);
+    
+       return $this->render('mqlUITCandidatureBundle:Candidature:ins3.html.twig', array(           
+            'formcand'   => $formcand->createView(),
+            'candidatures' => $candidatures,           
         ));
+    
+}
+           
+      
+      
+
     }
     
     

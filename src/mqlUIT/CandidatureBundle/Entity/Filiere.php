@@ -17,6 +17,10 @@ class Filiere
     /**
      * @var string
      */
+    private $grade;
+    /**
+     * @var string
+     */
     private $intitule;
 
     /**
@@ -34,7 +38,28 @@ class Filiere
     {
         return $this->id;
     }
+/**
+     * Set grade
+     *
+     * @param string $grade
+     * @return Filiere
+     */
+    public function setGrade($grade)
+    {
+        $this->grade = $grade;
+    
+        return $this;
+    }
 
+    /**
+     * Get grade
+     *
+     * @return string 
+     */
+    public function getGrade()
+    {
+        return $this->grade;
+    }
     /**
      * Set intitule
      *

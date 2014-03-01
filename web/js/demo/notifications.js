@@ -27,7 +27,9 @@ $(function () {
 	$('.msgbox-alert').live ('click', function (e) {
 		$.msgbox("The selection includes process white objects. Overprinting such objects is only useful in combination with transparency effects.");
 	});
-	
+	$('.msgbox-alert1').live ('click', function (e) {
+		$.msgbox("Pour postuler a une formation il faut remplir tous les semestres necessaires \" au moins de 1 à 4 \".");
+	});
 	$('.msgbox-info').live ('click', function (e) {
 		$.msgbox("jQuery is a fast and concise JavaScript Library that simplifies HTML document traversing, event handling, animating, and Ajax interactions for rapid web development.", {type: "info"});
 	});
