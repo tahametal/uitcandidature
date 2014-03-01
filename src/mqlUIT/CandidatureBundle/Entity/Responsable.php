@@ -30,7 +30,7 @@ class Responsable
     private $email;
 
     /**
-     * @var \mqlUIT\CandidatureBundle\Entity\Userfos
+     *  @var \mqlUIT\UserBundle\Entity\UserFOS
      */
     private $userfos;
 
@@ -117,10 +117,10 @@ class Responsable
     /**
      * Set userfos
      *
-     * @param \mqlUIT\CandidatureBundle\Entity\Userfos $userfos
+     * @param \mqlUIT\UserBundle\Entity\UserFOS $userFOS
      * @return Responsable
      */
-    public function setUserfos(\mqlUIT\CandidatureBundle\Entity\Userfos $userfos = null)
+    public function setUserfos(\mqlUIT\UserBundle\Entity\UserFOS $userfos = null)
     {
         $this->userfos = $userfos;
     
@@ -130,7 +130,7 @@ class Responsable
     /**
      * Get userfos
      *
-     * @return \mqlUIT\CandidatureBundle\Entity\Userfos 
+     * @return \mqlUIT\UserBundle\Entity\UserFOS
      */
     public function getUserfos()
     {

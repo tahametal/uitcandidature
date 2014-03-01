@@ -20,5 +20,6 @@ security:
         - { path: /candidat/*, role: ROLE_USER }
         - { path: /filiere/*, role: ROLE_ADMIN }
         - { path: /responsable/*, role: ROLE_SUPER_ADMIN }
+        - { path: /ajoutResponsable, role: ROLE_SUPER_ADMIN }
        
      

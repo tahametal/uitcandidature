@@ -171,16 +171,16 @@ class RegistrationController extends ContainerAware
                 $route = 'fos_user_registration_check_email';
             } else {
                 $authUser = true;
-                $route = 'fos_user_security_login';
+                $route = 'responsable_new';
             }
 
            // $this->setFlash('fos_user_success', 'registration.flash.user_created');
             $url = $this->container->get('router')->generate($route);
             $response = new RedirectResponse($url);
 
-            if ($authUser) {
+          /*  if ($authUser) {
                 $this->authenticateUser($user, $response);
-            }
+            }*/
             
             $userManager = $this->container->get('fos_user.user_manager');
             $usr = $userManager->findUserBy(array('username' => $user->getUsername()));

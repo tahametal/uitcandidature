@@ -31,3 +31,7 @@ detailsemestre:
 redirect:
     pattern: /redirection
     defaults: { _controller: mqlUITCandidatureBundle:Redirection:redirect }
+    
+fos_user_registration_register_Admin:
+    pattern: /ajoutResponsable
+    defaults: { _controller: FOSUserBundle:Registration:registerAdmin }
