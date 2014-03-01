@@ -26,7 +26,7 @@ public function __construct ($profile)
          return $er->createQueryBuilder('f')
                // ->Join('mqlUITCandidatureBundle:candidature', 'c', 'WITH', 'f.id = c.filiere')               
                 ->where('f.id NOT IN (select ff.id from mqlUITCandidatureBundle:candidature c join c.filiere ff where c.candidat = :id)')                
-                ->orderBy('f.intitule', 'DESC')
+                ->orderBy('f.intitule', 'ASC')
                 ->setParameter('id',$user);
     },
 ));

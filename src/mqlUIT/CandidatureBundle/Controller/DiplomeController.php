@@ -39,7 +39,7 @@ class DiplomeController extends Controller
         $repository = $this->getDoctrine()->getRepository('mqlUITCandidatureBundle:Candidat'); 
         $Candidat = $repository->findOneBy( array('userfos' =>$usr->getId()) );
         $entity  = new Diplome();
-        $form = $this->createForm(new DiplomeType(), $entity);
+        $form = $this->createForm(new DiplomeType($Candidat), $entity);
         $form->bind($request);
 
         if ($form->isValid()) {

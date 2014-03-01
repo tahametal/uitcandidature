@@ -36,7 +36,6 @@ class ExperienceController extends Controller
     public function createAction(Request $request)
     {
       $usr= $this->get('security.context')->getToken()->getUser();
-        $userid = $usr->getId();
         $repository = $this->getDoctrine()->getRepository('mqlUITCandidatureBundle:Candidat'); 
         $Candidat = $repository->findOneBy( array('userfos' =>$usr->getId()) );
       
@@ -54,7 +53,11 @@ class ExperienceController extends Controller
 
             return $this->redirect($this->generateUrl('experience_show', array('id' => $entity->getId())));
         
-    }
+            }
+        else{
+            echo'invalid';
+            die();
+        }
     }
     /**
      * Displays a form to create a new Experience entity.

@@ -10,7 +10,9 @@ DetailSemestre:
             generator:
                 strategy: IDENTITY
         note:
-            type: float
+            type: decimal
+            precision:  10
+            scale: 10
             nullable: true
         hasrattrapage:
             type: string

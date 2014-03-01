@@ -18,6 +18,10 @@ class Diplometype
      * @var string
      */
     private $type;
+    /**
+     * @var string
+     */
+    private $grade;
 
 
     /**
@@ -54,5 +58,28 @@ class Diplometype
     }
     public function __toString(){
             return $this->getType();
+    }
+    
+     /**
+     * Set grade
+     *
+     * @param string $grade
+     * @return Candidat
+     */
+    public function setGrade($grade)
+    {
+        $this->grade = $grade;
+    
+        return $this;
+    }
+
+    /**
+     * Get grade
+     *
+     * @return string 
+     */
+    public function getGrade()
+    {
+        return $this->grade;
     }
 }

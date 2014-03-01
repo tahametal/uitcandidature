@@ -28,3 +28,6 @@ detailsemestre_delete:
     pattern:  /detailsemestre/{id}/delete
     defaults: { _controller: "mqlUITCandidatureBundle:DetailSemestre:delete" }
     requirements: { _method: post|delete }
+detailsemestre_supprimer:
+    pattern:  /detailsemestre/{id}/supprimer
+    defaults: { _controller: "mqlUITCandidatureBundle:DetailSemestre:supprimer" }

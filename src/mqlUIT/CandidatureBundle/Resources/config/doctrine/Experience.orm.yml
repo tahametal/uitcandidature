@@ -15,10 +15,10 @@ mqlUIT\CandidatureBundle\Entity\Experience:
             fixed: false
             nullable: true
         datedebut:
-            type: datetime
+            type: date
             nullable: true
         datefin:
-            type: datetime
+            type: date
             nullable: true
         description:
             type: string

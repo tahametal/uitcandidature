@@ -30,7 +30,7 @@ class Diplome
     private $dateobtention;
 
     /**
-     * @var float
+     * @var decimal
      */
     private $note;
 
@@ -142,7 +142,7 @@ class Diplome
     /**
      * Set note
      *
-     * @param float $note
+     * @param decimal $note
      * @return Diplome
      */
     public function setNote($note)
@@ -155,7 +155,7 @@ class Diplome
     /**
      * Get note
      *
-     * @return float 
+     * @return decimal 
      */
     public function getNote()
     {

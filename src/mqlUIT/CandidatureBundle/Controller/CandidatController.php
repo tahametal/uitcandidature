@@ -238,8 +238,8 @@ class CandidatController extends Controller
         $note = new \mqlUIT\CandidatureBundle\Entity\DetailSemestre();
         $diplome = new \mqlUIT\CandidatureBundle\Entity\Diplome();
         $formexp   = $this->createForm(new ExperienceType(), $experience);
-        $formdip   = $this->createForm(new \mqlUIT\CandidatureBundle\Form\DiplomeType(), $diplome);
-        $formnote   = $this->createForm(new \mqlUIT\CandidatureBundle\Form\DetailSemestreType(), $note);
+        $formdip   = $this->createForm(new \mqlUIT\CandidatureBundle\Form\DiplomeType($Candidat), $diplome);
+        $formnote   = $this->createForm(new \mqlUIT\CandidatureBundle\Form\DetailSemestreType($Candidat), $note);
         
         return $this->render('mqlUITCandidatureBundle:Candidat:inscription2.html.twig', array(
            

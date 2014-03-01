@@ -138,6 +138,8 @@
                                             <th>Semestre</th>
                                             <th>Note</th>
                                             <th>Rattrapage</th>
+                                            <th>Détails</th>
+                                            <th>Supprimer</th>
                                             
                                         </tr>
                                         </thead>
@@ -150,7 +152,7 @@
                                                 
                                                 <td><a  data-toggle="modal" class="open-exp" href="#modal-exp2"
                                                         data-id="{{ note.id ~";" ~ note.semestre.semestre ~ ";" ~ note.note ~ ";" ~ note.hasrattrapage}}">Détails</a></td>
-                                                        <td><a class="btn btn-small" href="{{ path('experience_supprimer', { 'id': exp.id }) }}"> <i class="btn-icon-only icon-remove"></i></a></td>
+                                                        <td><a class="btn btn-small" href="{{ path('detailsemestre_supprimer', { 'id': note.id }) }}"> <i class="btn-icon-only icon-remove"></i></a></td>
                                             </tr>   
                                             </tr>           
                                             {% endfor %}

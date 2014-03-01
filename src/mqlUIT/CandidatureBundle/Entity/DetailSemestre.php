@@ -15,7 +15,7 @@ class DetailSemestre
     private $id;
 
     /**
-     * @var float
+     * @var decimal
      */
     private $note;
 
@@ -48,7 +48,7 @@ class DetailSemestre
     /**
      * Set note
      *
-     * @param float $note
+     * @param decimal $note
      * @return DetailSemestre
      */
     public function setNote($note)
@@ -61,7 +61,7 @@ class DetailSemestre
     /**
      * Get note
      *
-     * @return float 
+     * @return decimal 
      */
     public function getNote()
     {
