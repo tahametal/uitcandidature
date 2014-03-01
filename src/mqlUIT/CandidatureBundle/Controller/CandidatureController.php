@@ -211,7 +211,7 @@ class CandidatureController extends Controller
                $query=$qb->getQuery();
                $candidatures = $query->getResult();
                $candidature = new Candidature();
-               $formcand   = $this->createForm(new \mqlUIT\CandidatureBundle\Form\CandidatureType(), $candidature);
+               $formcand   = $this->createForm(new \mqlUIT\CandidatureBundle\Form\CandidatureType1($Candidat), $candidature);
     
        return $this->render('mqlUITCandidatureBundle:Candidature:ins3.html.twig', array(           
             'formcand'   => $formcand->createView(),
