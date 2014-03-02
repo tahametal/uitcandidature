@@ -25,7 +25,7 @@ class RedirectionController extends Controller
            }
             else 
             {
-              return $this->redirect($this->generateUrl('candidat_edit', array('id' => $Candidat->getId())));  
+              return $this->redirect($this->generateUrl('candidat_show', array('id' => $Candidat->getId())));  
             }
         }
          if ( $this->get('security.context')->isGranted('ROLE_ADMIN')){ 

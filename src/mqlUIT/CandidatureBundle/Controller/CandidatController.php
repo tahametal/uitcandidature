@@ -44,7 +44,7 @@ class CandidatController extends Controller
         $form->bind($request);
         //$form->bindRequest($request);
       // $entity = $form->getData();
-     
+     if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
             $usr= $this->get('security.context')->getToken()->getUser();
             $userid = $usr->getId();
@@ -66,12 +66,12 @@ class CandidatController extends Controller
             return $this->redirect($this->generateUrl('candidat_show', array('id' => $entity->getId())));
         
 
-      /* 
+      
        }
          return $this->render('mqlUITCandidatureBundle:Candidat:prob.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
-        ));*/
+        ));
     }
 
     /**
@@ -104,10 +104,12 @@ class CandidatController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-
+$editForm = $this->createForm(new CandidatType(), $entity);
         return $this->render('mqlUITCandidatureBundle:Candidat:show.html.twig', array(
             'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
+            'delete_form' => $deleteForm->createView(),
+            'edit_form'   => $editForm->createView(),
+            ));
     }
 
     /**
@@ -152,18 +154,18 @@ class CandidatController extends Controller
         $editForm = $this->createForm(new CandidatType(), $entity);
         $editForm->bind($request);
 
-       
+        if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('candidat_edit', array('id' => $id)));
-      /*  }
+            return $this->redirect($this->generateUrl('candidat_show', array('id' => $id)));
+        }
 
         return $this->render('mqlUITCandidatureBundle:Candidat:edit.html.twig', array(
             'entity'      => $entity,
             'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),
-        ));*/
+        ));
     }
 
     /**

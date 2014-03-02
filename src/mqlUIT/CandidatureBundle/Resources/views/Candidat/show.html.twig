@@ -1,82 +1,119 @@
 {% extends '::base.html.twig' %}
+{% block stylesheets %}
+<style>
+        th{
+        font-size :15px;
+        font-weight :bold;
+        }
+          #mqluit_candidaturebundle_candidattype_datenaissance_day{
+        width: 60px;
+        }
+         #mqluit_candidaturebundle_candidattype_datenaissance_year,#mqluit_candidaturebundle_candidattype_datenaissance_month{
+        width: 80px;
+        }
+</style>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/ui-lightness/jquery-ui.css" type="text/css" />  
+<link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css" media="all" />
+<link rel="stylesheet"  href="{{ asset('css/bootstrap-image-gallery.min.css') }}" type="text/css" media="all" />
 
+{% endblock %}
+{% block titreP -%} Profile {% endblock %}
 {% block body -%}
-    <h1>Candidat</h1>
 
-    <table class="record_properties">
-        <tbody>
-            <tr>
-                <th>Id</th>
-                <td>{{ entity.id }}</td>
-            </tr>
-            <tr>
-                <th>Nom</th>
-                <td>{{ entity.nom }}</td>
-            </tr>
-            <tr>
-                <th>Prenom</th>
-                <td>{{ entity.prenom }}</td>
-            </tr>
-            <tr>
-                <th>Datenaissance</th>
-                <td>{{ entity.datenaissance|date('Y-m-d H:i:s') }}</td>
-            </tr>
-            <tr>
-                <th>Adresse</th>
-                <td>{{ entity.adresse }}</td>
-            </tr>
-            <tr>
-                <th>Cin</th>
-                <td>{{ entity.cin }}</td>
-            </tr>
-            <tr>
-                <th>Cne</th>
-                <td>{{ entity.cne }}</td>
-            </tr>
-            <tr>
-                <th>Email</th>
-                <td>{{ entity.email }}</td>
-            </tr>
-            <tr>
-                <th>Telephone</th>
-                <td>{{ entity.telephone }}</td>
-            </tr>
-            <tr>
-                <th>Nationalite</th>
-                <td>{{ entity.nationalite }}</td>
-            </tr>
-            <tr>
-                <th>Ville</th>
-                <td>{{ entity.ville }}</td>
-            </tr>
-            <tr>
-                <th>Pays</th>
-                <td>{{ entity.pays }}</td>
-            </tr>
-            <tr>
-                <th>Sexe</th>
-                <td>{{ entity.sexe }}</td>
-            </tr>
-        </tbody>
-    </table>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('candidat') }}">
-            Back to the list
-        </a>
-    </li>
-    <li>
-        <a href="{{ path('candidat_edit', { 'id': entity.id }) }}">
-            Edit
-        </a>
-    </li>
-    <li>
-        <form action="{{ path('candidat_delete', { 'id': entity.id }) }}" method="post">
-            <input type="hidden" name="_method" value="DELETE" />
-            {{ form_widget(delete_form) }}
-            <button type="submit">Delete</button>
-        </form>
-    </li>
-</ul>
+
+
+    
+    
+      			
+  			
+  			<div class="span6">
+  				
+  				<div class="widget stacked widget-table">
+	
+					<div class="widget-content">
+						<table class="table table-bordered table-striped">
+							
+						
+					
+						<tbody>
+                                          
+
+            <tr>
+                <th class="description">Nom</th>
+                <td class="value">{{ entity.nom }}</td>
+            </tr>
+            <tr>
+                <th class="description">Prenom</th>
+                <td class="value">{{ entity.prenom }}</td>
+            </tr>
+            <tr>
+                <th class="description">Datenaissance</th>
+                <td class="value">{{ entity.datenaissance|date('Y-m-d H:i:s') }}</td>
+            </tr>
+            <tr>
+                <th class="description">Adresse</th>
+                <td class="value">{{ entity.adresse }}</td>
+            </tr>
+            <tr>
+                <th class="description">Cin</th>
+                <td class="value">{{ entity.cin }}</td>
+            </tr>
+            <tr>
+                <th class="description">Cne</th>
+                <td class="value">{{ entity.cne }}</td>
+            </tr>
+            <tr>
+                <th class="description">Email</th>
+                <td class="value">{{ entity.email }}</td>
+            </tr>
+            <tr>
+                <th class="description">Telephone</th>
+                <td class="value">{{ entity.telephone }}</td>
+            </tr>
+            <tr>
+                <th class="description">Nationalite</th>
+                <td class="value">{{ entity.nationalite }}</td>
+            </tr>
+            <tr>
+                <th class="description">Ville</th>
+                <td class="value">{{ entity.ville }}</td>
+            </tr>
+            <tr>
+                <th class="description">Pays</th>
+                <td class="value">{{ entity.pays }}</td>
+            </tr>
+            <tr>
+                <th class="description">Sexe</th>
+                <td class="value">{{ entity.sexe }}</td>
+            </tr>
+             <tr>
+                 <th class="description" colspan="2">
+                 
+   <a data-toggle="modal" href="#editform" class="btn btn-small btn-success" href="javascript:;" style="float: left;">
+        Modifier</a>
+   <a href="{{ path('candidat_inscription2') }}" class="btn btn-small btn-success" style="float: right;">Continue >>></a>
+              
+                 </th>
+                 
+             
+            </tr>
+						
+					</tbody></table>
+						
+					</div> <!-- .widget-content -->
+					
+				</div>
+  				
+  			</div> <!-- /span4 -->
+
+
+    
+    
+{% endblock %}
+ {% block test %}
+ <div id="editform" class="modal hide fade" tabindex="-1" style="overflow-y: auto;height: 600px;">
+{% include "mqlUITCandidatureBundle:Candidat:edit.html.twig" %}
+</div>
+
 {% endblock %}
