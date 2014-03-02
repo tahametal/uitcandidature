@@ -252,6 +252,18 @@ else if ($nb >= 4 && $nb < 6)
     }
     
     
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
         public function deletefAction($id)
     {
         $em = $this->getDoctrine()->getManager();
@@ -270,5 +282,53 @@ else if ($nb >= 4 && $nb < 6)
 
         
     }
+    
+    
+    
+            public function validationAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+
+        $entity = $em->getRepository('mqlUITCandidatureBundle:Candidature')->find($id);
+         if (!$entity) {
+            throw $this->createNotFoundException('Unable to find Candidature entity.');
+        }
+        $em->remove($entity);
+        $em->flush();
+        
+      
+
+         return $this->redirect($this->generateUrl('candidature_ins3'));
+       
+
+        
+    }
+    
+    
+                public function validationshowAction()
+    {
+        $em = $this->getDoctrine()->getManager();
+        $usr= $this->get('security.context')->getToken()->getUser();
+        $repository = $this->getDoctrine()->getRepository('mqlUITCandidatureBundle:Candidat'); 
+        $Candidat = $repository->findOneBy( array('userfos' =>$usr->getId()) );
+        
+       $entity = $em->getRepository('mqlUITCandidatureBundle:Candidat')->find($usr->getId());
+       $experiences = $em->getRepository('mqlUITCandidatureBundle:Experience')->findByCandidat($Candidat);
+       $formations = $em->getRepository('mqlUITCandidatureBundle:Diplome')->findByCandidat($Candidat);
+       $semestres = $em->getRepository('mqlUITCandidatureBundle:DetailSemestre')->findByCandidat($Candidat);
+       return $this->render('mqlUITCandidatureBundle:Candidature:validation.html.twig', array(
+            'entity' => $entity ,
+            'experiences' => $experiences ,
+            'formations' => $formations ,
+           'semestres' => $semestres ,
+        ));
+       
+
+        
+    }
+    
+    
+    
+    
     
 }

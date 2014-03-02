@@ -36,3 +36,11 @@ candidature_ins3:
 candidature_deletef:
     pattern:  /candidature/{id}/deletef
     defaults: { _controller: "mqlUITCandidatureBundle:Candidature:deletef" }
+
+candidature_validation:
+    pattern:  /candidature/validation
+    defaults: { _controller: "mqlUITCandidatureBundle:Candidature:validation" }
+    
+candidature_validationshow:
+    pattern:  /candidature/validationshow
+    defaults: { _controller: "mqlUITCandidatureBundle:Candidature:validationshow" }
