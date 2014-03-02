@@ -10,21 +10,7 @@
    
 {% block body -%}
 
-
-
-   <div class="span11" >
-
-      		<div class="widget stacked">
-					
-				<div class="widget-header">
-					<i class="icon-check"></i>
-					Candidature
-				</div> <!-- /widget-header -->
-				
-				<div class="widget-content">
-                                    
-
-                                    
+                         
                                     
                                      <table class="table table-bordered table-striped table-highlight">
                                         <thead>
@@ -62,22 +48,14 @@
                                     Ajouter une Candidature
 
         </a>
-		{% else %}<a href="{{ path('candidat_inscription2') }}" class="btn btn-large btn-primary">Retour</a><strong>        </strong><a href="{{ path('candidat') }}" class="btn btn-large btn-primary">Continue</a>			{% endif %}
-					
-					
-                                </div> <!-- /widget-content -->
-					
-			</div> <!-- /widget -->					
-			
-</div>
-   
-   
-   
-   
-   
-   
-   
-   
+		{% endif %}
+{% if counter >= 1 %}
+<a href="{{ path('candidat_inscription2') }}" class="btn btn-large btn-primary">Retour</a>
+<strong>        </strong>
+<a href="{{ path('candidature_validationshow') }}" class="btn btn-large btn-primary">Continue</a>			
+{% endif %}					
+				
+
    <div id="modal-candidature" class="modal hide fade" tabindex="-1">
         <form action="{{ path('candidature_create') }}" method="post" {{ form_enctype(formcand) }}>
     <div class="modal-header">

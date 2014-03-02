@@ -287,18 +287,30 @@ else if ($nb >= 4 && $nb < 6)
     
             public function validationAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
-        $entity = $em->getRepository('mqlUITCandidatureBundle:Candidature')->find($id);
-         if (!$entity) {
-            throw $this->createNotFoundException('Unable to find Candidature entity.');
-        }
-        $em->remove($entity);
-        $em->flush();
         
+                
+        $em = $this->getDoctrine()->getManager();
+        
+        $usr= $this->get('security.context')->getToken()->getUser();
+        $repository = $this->getDoctrine()->getRepository('mqlUITCandidatureBundle:Candidat'); 
+        $Candidat = $repository->findOneBy( array('userfos' =>$usr->getId()) );
+        
+        $q = $em->createQuery('update mqlUITCandidatureBundle:Candidature c set c.isvalid = :t where c.candidat = :id')->setParameter('id',$Candidat)->setParameter('t','t');
+        $q->execute();
+        
+       $entity = $em->getRepository('mqlUITCandidatureBundle:Candidat')->find($usr->getId());
+       $experiences = $em->getRepository('mqlUITCandidatureBundle:Experience')->findByCandidat($Candidat);
+       $formations = $em->getRepository('mqlUITCandidatureBundle:Diplome')->findByCandidat($Candidat);
+       $semestres = $em->getRepository('mqlUITCandidatureBundle:DetailSemestre')->findByCandidat($Candidat);
+       $candidatures = $em->getRepository('mqlUITCandidatureBundle:Candidature')->findByCandidat($Candidat);
       
-
-         return $this->redirect($this->generateUrl('candidature_ins3'));
+       return $this->render('mqlUITCandidatureBundle:Candidature:complete.html.twig', array(
+            'entity' => $entity ,
+            'experiences' => $experiences ,
+            'formations' => $formations ,
+           'semestres' => $semestres ,
+           'candidatures' => $candidatures ,
+        ));
        
 
         
@@ -316,11 +328,13 @@ else if ($nb >= 4 && $nb < 6)
        $experiences = $em->getRepository('mqlUITCandidatureBundle:Experience')->findByCandidat($Candidat);
        $formations = $em->getRepository('mqlUITCandidatureBundle:Diplome')->findByCandidat($Candidat);
        $semestres = $em->getRepository('mqlUITCandidatureBundle:DetailSemestre')->findByCandidat($Candidat);
+       $candidatures = $em->getRepository('mqlUITCandidatureBundle:Candidature')->findByCandidat($Candidat);
        return $this->render('mqlUITCandidatureBundle:Candidature:validation.html.twig', array(
             'entity' => $entity ,
             'experiences' => $experiences ,
             'formations' => $formations ,
            'semestres' => $semestres ,
+           'candidatures' => $candidatures ,
         ));
        
 
