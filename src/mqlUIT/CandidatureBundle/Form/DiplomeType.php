@@ -22,13 +22,13 @@ class DiplomeType extends AbstractType
             ->add('dateinscription', 'date', array(
                                                 'widget' => 'single_text',
                                                 'input' => 'datetime',
-                                                'format' => 'dd/MM/yyyy',
+                                                'format' => 'yyyy-MM-dd',
                                                 'attr' => array('class' => 'date'),
                                                 ))
             ->add('dateobtention', 'date', array(
                                                 'widget' => 'single_text',
                                                 'input' => 'datetime',
-                                                'format' => 'dd/MM/yyyy',
+                                                'format' => 'yyyy-MM-dd',
                                                 'attr' => array('class' => 'date'),
                                                 ))
             ->add('etablissement')
@@ -39,7 +39,7 @@ class DiplomeType extends AbstractType
          return $er->createQueryBuilder('f')
                // ->Join('mqlUITCandidatureBundle:candidature', 'c', 'WITH', 'f.id = c.filiere')               
                 ->where('f.grade NOT IN (select ff.grade from mqlUITCandidatureBundle:Diplome c join c.diplometype ff where c.candidat = :id)')                
-                ->orderBy('f.id', 'DESC')
+                ->orderBy('f.id', 'ASC')
                 ->setParameter('id',$user);
     },
 ))

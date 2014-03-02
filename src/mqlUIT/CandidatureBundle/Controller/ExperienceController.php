@@ -133,22 +133,18 @@ class ExperienceController extends Controller
             throw $this->createNotFoundException('Unable to find Experience entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
+        
         $editForm = $this->createForm(new ExperienceType(), $entity);
         $editForm->bind($request);
 
         if ($editForm->isValid()) {
             $em->persist($entity);
             $em->flush();
-
-            return $this->redirect($this->generateUrl('experience_edit', array('id' => $id)));
+        return $this->redirect($this->generateUrl('candidat_inscription2'));
+            
         }
 
-        return $this->render('mqlUITCandidatureBundle:Experience:edit.html.twig', array(
-            'entity'      => $entity,
-            'edit_form'   => $editForm->createView(),
-            'delete_form' => $deleteForm->createView(),
-        ));
+        return $this->redirect($this->generateUrl('candidat_inscription2'));
     }
 
     /**

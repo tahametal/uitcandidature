@@ -88,6 +88,7 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                             {% set counter1 = 0 %}
                                             {% for dip in diplomes %}
                                             <tr>
                                                 <td>{{dip.intitule }}</td>
@@ -95,23 +96,22 @@
                                                 <td>{{dip.etablissement}}</td>
                                                 <td>{{dip.diplometype.type}}</td>
                                                 <td><a 
+                                                    {% set counter1 = loop.index + 1%}    
                                                         data-toggle="modal" class="open-dip" href="#modal-dip2"
                                                         data-id="{{ dip.id ~";" ~ dip.intitule ~ ";" ~ dip.dateinscription|date('Y-m-d ') ~ ";" ~ dip.dateobtention|date('Y-m-d ') ~ ";" ~ dip.note ~ ";" ~ dip.mention ~ ";" ~ dip.etablissement ~ ";" ~ dip.ville ~ ";"  ~ dip.diplometype.type  }}">Détails</a></td>
                                                         <td><a class="btn btn-small" href="{{ path('diplome_supprimer', { 'id': dip.id }) }}"> <i class="btn-icon-only icon-remove"></i></a></td>
-                                            </tr>           
+                                            </tr> 
+                                           
                                             {% endfor %}
                                            
                                             
 
                                         </tbody>
                                     </table>
-				<a data-toggle="modal" href="#modal-dip" class="btn btn-small btn-success" href="javascript:;" style="float: right;">
-
-                                    Ajouter une Formation
-
-        </a>
+                                          {% if counter1 < 3 %}
+				<a data-toggle="modal" href="#modal-dip" class="btn btn-small btn-success" href="javascript:;" style="float: right;"> Ajouter une Formation  </a>
 					
-					
+					{% endif %}
 					
                                 </div> <!-- /widget-content -->
 					
@@ -120,7 +120,7 @@
 </div>
 
 
-
+{% if counter1 > 0 %}
 
 <div class="span11">
 
@@ -144,17 +144,22 @@
                                         </tr>
                                         </thead>
                                         <tbody>
+                                             {% set counter2 = 0 %}
+                                               
                                             {% for note in notes %}
                                             <tr>
+                                                
                                                 <td>{{note.semestre.semestre }}</td>
                                                 <td>{{note.note}}</td>
                                                 <td>{{note.hasrattrapage}}</td>
                                                 
                                                 <td><a  data-toggle="modal" class="open-exp" href="#modal-exp2"
                                                         data-id="{{ note.id ~";" ~ note.semestre.semestre ~ ";" ~ note.note ~ ";" ~ note.hasrattrapage}}">Détails</a></td>
-                                                        <td><a class="btn btn-small" href="{{ path('detailsemestre_supprimer', { 'id': note.id }) }}"> <i class="btn-icon-only icon-remove"></i></a></td>
+                                                        
+                                                        <td>{%if (loop.index == notes | length )  %}<a class="btn btn-small" href="{{ path('detailsemestre_supprimer', { 'id': note.id }) }}"> <i class="btn-icon-only icon-remove"></i></a>{%endif%}</td>
                                             </tr>   
-                                            </tr>           
+                                            </tr>  
+                                            {% set counter2 = loop.index %}
                                             {% endfor %}
 
                                            
@@ -162,12 +167,10 @@
 
                                         </tbody>
                                     </table>
+                                   {% if counter2 < 6 %}
 				<a data-toggle="modal" href="#modal-note" class="btn btn-small btn-success" href="javascript:;" style="float: right;">
-
-                                    Ajouter une Note Semetre
-
-        </a>
-					
+                                Ajouter une Note Semetre</a>
+					{% endif %}
 					
 					
                                 </div> <!-- /widget-content -->
@@ -175,6 +178,7 @@
 			</div> <!-- /widget -->					
 			
 </div>
+{% endif %}
     
 
 <div id="modal-exp" class="modal hide fade" tabindex="-1">
@@ -297,6 +301,9 @@
     </table>
    </center>
     </div>
+</div>
+
+
 <div id="modal-exp2" class="modal hide fade" tabindex="-1">
     <div class="modal-header">
         <a class="close" data-dismiss="modal">&times;</a>
@@ -341,8 +348,17 @@
     </div>
 
 </div>
+        
 
-
+  <p>
+            <br/> 
+           <a href="{{ path('candidat_inscription2') }}" class="btn btn-large btn-primary">Modifier les données personnelle</a>
+           {% if counter2 == 6 %}
+            <a href="{{ path('candidature_ins3') }}" class="btn btn-large btn-primary">Candidature Pour des Master</a>
+           {% elseif counter2 == 4 %}
+            <a href="{{ path('candidature_ins3') }}" class="btn btn-large btn-primary">Candidature pour Licence</a>
+           {% endif %}
+  </p>
 
 
     
@@ -354,7 +370,9 @@
      <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"></script>
        
          <script>
-            $("form input.date").datepicker();
+            //$("form input.date").datepicker();
+            $("form input.date").datepicker({ dateFormat: 'yy-mm-dd' });
+            
         </script>
   <script type="text/javascript">
        $(document).on("click", ".open-dip", function (e) {

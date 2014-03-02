@@ -15,13 +15,13 @@ class ExperienceType extends AbstractType
             ->add('datedebut', 'date', array(
                                                 'widget' => 'single_text',
                                                 'input' => 'datetime',
-                                                'format' => 'dd/MM/yyyy',
+                                                'format' => 'yyyy-MM-dd',
                                                 'attr' => array('class' => 'date'),
                                                 ))
             ->add('datefin', 'date', array(
                                                 'widget' => 'single_text',
                                                 'input' => 'datetime',
-                                                'format' => 'dd/MM/yyyy',
+                                                'format' => 'yyyy-MM-dd',
                                                 'attr' => array('class' => 'date'),
                                                 ))
             ->add('description')

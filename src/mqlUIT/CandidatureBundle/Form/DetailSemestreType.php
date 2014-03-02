@@ -19,15 +19,21 @@ class DetailSemestreType extends AbstractType
         $user = $this->user;
         $builder
             ->add('note')
-            ->add('hasrattrapage')
+            ->add('hasrattrapage', 'choice', array(
+                    'choices'   => array('NON' => 'Session normal', 'OUI' => 'Rattrapage'),
+                    'required'  => TRUE,
+                ))
+          
                        ->add('semestre', 'entity', array(
         'class' => 'mqlUITCandidatureBundle:Semestre',
         'query_builder' => function(EntityRepository $er) use ($user) {
          return $er->createQueryBuilder('f')
                // ->Join('mqlUITCandidatureBundle:candidature', 'c', 'WITH', 'f.id = c.filiere')               
                 ->where('f.id NOT IN (select ff.id from mqlUITCandidatureBundle:DetailSemestre c join c.semestre ff where c.candidat = :id)')                
-                ->orderBy('f.id', 'DESC')
-                ->setParameter('id',$user);
+                ->orderBy('f.id', 'ASC')
+                ->setParameter('id',$user)
+                 ->setMaxResults(1)
+           ;
     },
 ))
         ;

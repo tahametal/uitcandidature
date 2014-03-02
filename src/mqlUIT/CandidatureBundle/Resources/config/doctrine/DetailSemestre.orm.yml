@@ -16,7 +16,7 @@ mqlUIT\CandidatureBundle\Entity\DetailSemestre:
             nullable: true
         hasrattrapage:
             type: string
-            length: 1
+            length: 3
             fixed: false
             nullable: true
     manyToOne:

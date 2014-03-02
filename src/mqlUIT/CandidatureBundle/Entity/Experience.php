@@ -20,12 +20,12 @@ class Experience
     private $intitule;
 
     /**
-     * @var \DateTime
+     * @var \Date
      */
     private $datedebut;
 
     /**
-     * @var \DateTime
+     * @var \Date
      */
     private $datefin;
 
@@ -81,7 +81,7 @@ class Experience
     /**
      * Set datedebut
      *
-     * @param \DateTime $datedebut
+     * @param \Date $datedebut
      * @return Experience
      */
     public function setDatedebut($datedebut)
@@ -94,7 +94,7 @@ class Experience
     /**
      * Get datedebut
      *
-     * @return \DateTime 
+     * @return \Date
      */
     public function getDatedebut()
     {
@@ -104,7 +104,7 @@ class Experience
     /**
      * Set datefin
      *
-     * @param \DateTime $datefin
+     * @param \Date $datefin
      * @return Experience
      */
     public function setDatefin($datefin)
@@ -117,7 +117,7 @@ class Experience
     /**
      * Get datefin
      *
-     * @return \DateTime 
+     * @return \Date
      */
     public function getDatefin()
     {
