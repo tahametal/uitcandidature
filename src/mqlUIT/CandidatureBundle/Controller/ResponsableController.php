@@ -83,9 +83,10 @@ class ResponsableController extends Controller
         }
 
         $deleteForm = $this->createDeleteForm($id);
-
+$editForm = $this->createForm(new ResponsableType(), $entity);
         return $this->render('mqlUITCandidatureBundle:Responsable:show.html.twig', array(
             'entity'      => $entity,
+            'edit_form'   => $editForm->createView(),
             'delete_form' => $deleteForm->createView(),        ));
     }
 

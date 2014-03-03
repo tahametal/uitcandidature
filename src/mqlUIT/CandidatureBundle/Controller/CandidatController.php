@@ -251,6 +251,7 @@ $editForm = $this->createForm(new CandidatType(), $entity);
             'experiences' => $experiences,
             'diplomes' => $diplomes,
             'notes' => $notes,
+            'candidat_id' => $Candidat->getId(),
         ));
     }
 }

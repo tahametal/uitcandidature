@@ -33,7 +33,7 @@ class RedirectionController extends Controller
             
         }
         if ( $this->get('security.context')->isGranted('ROLE_SUPER_ADMIN')){ 
-            $url = 'responsable_new';
+            $url = 'responsable';
             
         }
         

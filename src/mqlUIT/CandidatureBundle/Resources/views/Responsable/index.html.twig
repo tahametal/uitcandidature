@@ -1,45 +1,71 @@
 {% extends '::base.html.twig' %}
+{% block stylesheets %}
+<style>
+        th{
+        font-size :15px;
+        font-weight :bold;
+        }
+ 
+</style>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/themes/ui-lightness/jquery-ui.css" type="text/css" />  
+<link rel="stylesheet" href="{{ asset('css/style.css') }}" type="text/css" media="all" />
+<link rel="stylesheet"  href="{{ asset('css/bootstrap-image-gallery.min.css') }}" type="text/css" media="all" />
+
+{% endblock %}
+{% block titreP -%}Liste des Responsables {% endblock %}
 
 {% block body -%}
-    <h1>Responsable list</h1>
+    
+   <div class="span11">
+      <table class="table table-bordered table-striped table-highlight">
+                                        <thead>
+                                        <tr> 
+                                            <th>Nom</th>
+                                            <th>Prenom</th>
+                                            <th>Email</th>
+                                            <th>Filiere</th>
+                                            <th>Action</th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                            {% for entity in entities %}
+                                            <tr>
+                                                   
+                                                    <td>{{ entity.nom }}</td>
+                                                    <td style="width: 100px;">{{ entity.prenom }}</td>
+                                                    <td>{{ entity.email }}</td>
+                
+                                               
+                                                <td>
+                                                    <a class="btn btn-small btn-warning"  title="affecter"  ><i class="btn-icon-only icon-ok"></i></a>
+                                               </td>
+                                               <td>
+                                              <a  data-toggle="modal"  href="#editform"  class="btn btn-small btn-warning" href="javascript:;" title="modifier" > 
+                                                   <i class="btn-icon-only icon-edit"></i>
+                                               </a>
+                                                       
+                                              </td>
+                                            </tr>   
+                                                      
+                                            {% endfor %}
+   
 
-    <table class="records_list">
-        <thead>
-            <tr>
-                <th>Id</th>
-                <th>Nom</th>
-                <th>Prenom</th>
-                <th>Email</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% for entity in entities %}
-            <tr>
-                <td><a href="{{ path('responsable_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
-                <td>{{ entity.nom }}</td>
-                <td>{{ entity.prenom }}</td>
-                <td>{{ entity.email }}</td>
-                <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('responsable_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('responsable_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
-                </td>
-            </tr>
-        {% endfor %}
-        </tbody>
-    </table>
+                                        </tbody>
+                                    </table>
+				<a class="btn btn-small btn-success" href="{{ path('responsable_new') }}" style="float: right;">
+                                    Ajouter un responsable
+                                </a>
+					
+	
+</div>
+ <div id="editform" class="modal hide fade" tabindex="-1" style="overflow-y: auto;height: 600px;">
+{% include "mqlUITCandidatureBundle:Responsable:edit.html.twig" %}
+</div>
 
-        <ul>
-        <li>
-            <a href="{{ path('responsable_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
     {% endblock %}
+
+ {% block test %}
+
+
+{% endblock %}
+
