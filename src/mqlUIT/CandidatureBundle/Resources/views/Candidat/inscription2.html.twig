@@ -353,12 +353,12 @@
 
   <p>
             <br/> 
-           <a href="{{ path('candidat_show', { 'id': candidat_id }) }}" class="btn btn-small btn-success" style="float: left;" >Modifier les données personnelle</a>
-          
+           <a href="{{ path('candidat_show', { 'id': candidat_id }) }}" class="btn btn-small btn-success" style="float: left;" ><<< Modifier les données personnelle</a>
+        
  {% if counter2 == 6 %}
-            <a href="{{ path('candidature_ins3') }}" class="btn btn-large btn-primary">Candidature Pour des Master</a>
+            <a href="{{ path('candidature_ins3') }}" class="btn btn-small btn-success" style="float: right;">Candidature Pour des Master >>> </a>
            {% elseif counter2 == 4 %}
-            <a href="{{ path('candidature_ins3') }}" class="btn btn-large btn-primary">Candidature pour Licence</a>
+            <a href="{{ path('candidature_ins3') }}" class="btn btn-small btn-success" style="float: right;">Candidature pour Licence >>> </a>
            {% endif %}
   </p>
 
