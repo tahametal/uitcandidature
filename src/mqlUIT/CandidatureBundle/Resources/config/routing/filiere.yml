@@ -7,7 +7,7 @@ filiere_show:
     defaults: { _controller: "mqlUITCandidatureBundle:Filiere:show" }
 
 filiere_new:
-    pattern:  /filiere/new
+    pattern:  /filiere/new/{id}
     defaults: { _controller: "mqlUITCandidatureBundle:Filiere:new" }
 
 filiere_create:

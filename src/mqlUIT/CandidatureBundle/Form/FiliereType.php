@@ -12,7 +12,8 @@ class FiliereType extends AbstractType
     {
         $builder
             ->add('intitule')
-            ->add('responsable')
+            ->add('grade')
+           //->add('responsable')
         ;
     }
 

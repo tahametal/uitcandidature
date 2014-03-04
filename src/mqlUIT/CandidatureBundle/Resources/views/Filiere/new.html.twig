@@ -4,6 +4,7 @@
     <h1>Filiere creation</h1>
 
     <form action="{{ path('filiere_create') }}" method="post" {{ form_enctype(form) }}>
+        <input type="hidden" name="res" value="{{res}}" />
         {{ form_widget(form) }}
         <p>
             <button type="submit">Create</button>

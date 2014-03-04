@@ -14,7 +14,16 @@ class ResponsableType extends AbstractType
             ->add('nom')
             ->add('prenom')
             ->add('email')
-            ->add('userfos')
+           ->add('userfos', 'entity', array(
+        'class' => 'mqlUIT\UserBundle\Entity\UserFOS',
+        'query_builder' => function(\Doctrine\ORM\EntityRepository  $er){
+         return $er->createQueryBuilder('f')   
+                 ->where('f.roles like \'a:1:{i:0;s:10:"ROLE_ADMIN";}\'  ')                
+                ->orderBy('f.id', 'DESC')
+                ->setMaxResults(1)
+           ;
+    },
+))
         ;
     }
 

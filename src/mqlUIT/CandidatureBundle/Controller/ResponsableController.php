@@ -23,9 +23,29 @@ class ResponsableController extends Controller
         $em = $this->getDoctrine()->getManager();
 
         $entities = $em->getRepository('mqlUITCandidatureBundle:Responsable')->findAll();
+        
+        $filiere = $em->getRepository('mqlUITCandidatureBundle:Filiere')->findAll();
+        
+      
+ /*       $qb = $em->createQueryBuilder();
+     
+$res = $qb->select('res.id')
+             ->from('mqlUITCandidatureBundle:Responsable', 'res')
+             ->getQuery()
+             ->getResult();     
+
+$fil = $qb->select('fil.responsable')
+             ->from('mqlUITCandidatureBundle:Filiere', 'fil')
+             ->where($qb->expr()->In('fil.responsable', $res))
+             ->getQuery()
+             ->getResult();
+        
+    */    
+        
 
         return $this->render('mqlUITCandidatureBundle:Responsable:index.html.twig', array(
             'entities' => $entities,
+            'filiere' => $filiere,
         ));
     }
 
@@ -38,9 +58,15 @@ class ResponsableController extends Controller
         $entity  = new Responsable();
         $form = $this->createForm(new ResponsableType(), $entity);
         $form->bind($request);
-
+        
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+          /*  $usrid = $this->container->get('request')->getSession()->get('userid');
+            $usr = $em->getRepository('mqlUITCandidatureBundle:UserFOS')->find($usrid);
+            $test = new \mqlUIT\UserBundle\Entity\UserFOS();
+            $test = $usr;
+            $entity->setUserfos($test);
+           */
             $em->persist($entity);
             $em->flush();
 

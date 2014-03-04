@@ -136,4 +136,8 @@ class Responsable
     {
         return $this->userfos;
     }
+    
+    public function __toString() {
+        return $this->getNom() ." ". $this->getPrenom();
+    }
 }

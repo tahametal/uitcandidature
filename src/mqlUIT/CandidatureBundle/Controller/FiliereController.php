@@ -41,6 +41,9 @@ class FiliereController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
+            $test = $_POST['res'];
+            $res = $em->getRepository('mqlUITCandidatureBundle:Responsable')->find($test);
+           $entity->setResponsable($res);
             $em->persist($entity);
             $em->flush();
 
@@ -57,14 +60,15 @@ class FiliereController extends Controller
      * Displays a form to create a new Filiere entity.
      *
      */
-    public function newAction()
+    public function newAction($id)
     {
         $entity = new Filiere();
         $form   = $this->createForm(new FiliereType(), $entity);
-
+    
         return $this->render('mqlUITCandidatureBundle:Filiere:new.html.twig', array(
             'entity' => $entity,
             'form'   => $form->createView(),
+            'res' => $id,
         ));
     }
 

@@ -49,7 +49,7 @@
             </tr>
             <tr>
                 <th class="description">Datenaissance</th>
-                <td class="value">{{ entity.datenaissance|date('Y-m-d H:i:s') }}</td>
+                <td class="value">{{ entity.datenaissance|date('Y-m-d') }}</td>
             </tr>
             <tr>
                 <th class="description">Adresse</th>
@@ -108,7 +108,11 @@
   			</div> <!-- /span4 -->
 
 
-<div id="editform" class="modal hide fade" tabindex="-1" style="overflow-y: auto;height: 600px;">
+<div id="editform" class="modal hide fade" tabindex="-1" style="overflow-y: auto;height:600px;">
+      <div class="modal-header">
+        <a class="close" data-dismiss="modal">&times;</a>
+        <h3 class="modal-title">Modifier Profil</h3>
+    </div>
 {% include "mqlUITCandidatureBundle:Candidat:edit.html.twig" %}
 </div>
     

@@ -186,7 +186,11 @@ class RegistrationController extends ContainerAware
             $usr = $userManager->findUserBy(array('username' => $user->getUsername()));
             $usr->addRole('ROLE_ADMIN');
             $userManager->updateUser($usr); 
-
+          
+            
+            //$this->container->get('request')->getSession()->set('userid', $usr->getId());
+            
+            
             return $response;
         }
 

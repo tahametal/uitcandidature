@@ -18,11 +18,8 @@ security:
         - { path: ^/register, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/resetting, role: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: /candidat/*, role: ROLE_USER }
-        - { path: /filiere/*, role: ROLE_ADMIN }
+        - { path: /filiere/*, role: ROLE_SUPER_ADMIN  }
         - { path: /responsable/*, role: ROLE_SUPER_ADMIN }
         - { path: /ajoutResponsable, role: ROLE_SUPER_ADMIN }
-        - { path: /filiere/new, role: ROLE_SUPER_ADMIN }
-        - { path: /filiere/create, role: ROLE_SUPER_ADMIN }
-        - { path: /filiere/*/edit, role: ROLE_SUPER_ADMIN }
-        - { path: /filiere/*/update, role: ROLE_SUPER_ADMIN }
-        - { path:  /filiere/*/delete, role: ROLE_SUPER_ADMIN }
+   
+       
