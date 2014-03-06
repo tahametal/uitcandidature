@@ -4,6 +4,11 @@
         th{
         font-size :15px;
         font-weight :bold;
+        width:  150px;
+        }
+          td{
+       
+        width:  100px;
         }
           #mqluit_candidaturebundle_candidattype_datenaissance_day{
         width: 60px;
@@ -27,9 +32,9 @@
     
       			
   			
-  			<div class="span6">
+<div class="span6" style="float: left; width: 500px;" >
   				
-  				<div class="widget stacked widget-table">
+  				<div class="widget stacked widget-table" >
 	
 					<div class="widget-content">
 						<table class="table table-bordered table-striped">
@@ -40,40 +45,70 @@
                                           
 
             <tr>
-                <th class="description">Nom</th>
-                <td class="value">{{ entity.nom }}</td>
+                <th class="description">Nom et Prénom</th>
+                <td class="value">{{ entity.nom }}  {{ entity.prenom }}</td>
+            </tr>
+        <tr>
+                <th class="description">Sexe</th>
+                <td class="value">{{ entity.sexe }}</td>
             </tr>
             <tr>
-                <th class="description">Prenom</th>
-                <td class="value">{{ entity.prenom }}</td>
-            </tr>
-            <tr>
-                <th class="description">Datenaissance</th>
+                <th class="description">Date de Naissance</th>
                 <td class="value">{{ entity.datenaissance|date('Y-m-d') }}</td>
             </tr>
-            <tr>
-                <th class="description">Adresse</th>
-                <td class="value">{{ entity.adresse }}</td>
+                <tr>
+                <th class="description">Nationalité</th>
+                <td class="value">{{ entity.nationalite }}</td>
             </tr>
-            <tr>
-                <th class="description">Cin</th>
+                <tr>
+                <th class="description">CIN</th>
                 <td class="value">{{ entity.cin }}</td>
             </tr>
             <tr>
-                <th class="description">Cne</th>
+                <th class="description">CNE</th>
                 <td class="value">{{ entity.cne }}</td>
             </tr>
+            
+        </tbody></table>
+       		
+					</div> <!-- .widget-content -->
+					
+				</div>
+  				
+  			</div> <!-- /span4 -->
+
+                        
+                            
+    
+      			
+  			
+  			<div class="span6" style="float: right; margin-top: 20px;">
+  				
+  				<div class="widget stacked widget-table">
+	
+					<div class="widget-content">
+				
+            
+        	<table class="table table-bordered table-striped">
+							
+						
+					
+						<tbody>    
+         
+        
             <tr>
                 <th class="description">Email</th>
                 <td class="value">{{ entity.email }}</td>
             </tr>
             <tr>
-                <th class="description">Telephone</th>
+                <th class="description">GSM</th>
                 <td class="value">{{ entity.telephone }}</td>
             </tr>
-            <tr>
-                <th class="description">Nationalite</th>
-                <td class="value">{{ entity.nationalite }}</td>
+        
+            
+               <tr>
+                <th class="description">Adresse</th>
+                <td class="value">{{ entity.adresse }}</td>
             </tr>
             <tr>
                 <th class="description">Ville</th>
@@ -83,10 +118,32 @@
                 <th class="description">Pays</th>
                 <td class="value">{{ entity.pays }}</td>
             </tr>
-            <tr>
-                <th class="description">Sexe</th>
-                <td class="value">{{ entity.sexe }}</td>
-            </tr>
+
+						
+					</tbody></table>
+						
+					</div> <!-- .widget-content -->
+					
+				</div>
+  				
+  			</div> <!-- /span4 -->
+
+                        <div class="span10" style="margin-left: 80px;">
+  				
+  				<div class="widget stacked widget-table">
+	
+					<div class="widget-content">
+				
+            
+        	<table class="table table-bordered table-striped">
+							
+						
+					
+						<tbody>    
+         
+        
+    
+          
              <tr>
                  <th class="description" colspan="2">
                  
@@ -107,6 +164,9 @@
   				
   			</div> <!-- /span4 -->
 
+                        
+                                                
+                        
 
 <div id="editform" class="modal hide fade" tabindex="-1" style="overflow-y: auto;height:600px;">
       <div class="modal-header">
