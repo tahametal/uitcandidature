@@ -29,7 +29,7 @@ class RedirectionController extends Controller
             }
         }
          if ( $this->get('security.context')->isGranted('ROLE_ADMIN')){ 
-            $url = 'filiere_new';
+            $url = 'responsable_candidat';
             
         }
         if ( $this->get('security.context')->isGranted('ROLE_SUPER_ADMIN')){ 

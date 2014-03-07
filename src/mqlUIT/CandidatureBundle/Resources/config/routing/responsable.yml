@@ -28,3 +28,4 @@ responsable_delete:
     pattern:  /responsable/{id}/delete
     defaults: { _controller: "mqlUITCandidatureBundle:Responsable:delete" }
     requirements: { _method: post|delete }
+

@@ -298,7 +298,7 @@ else if ($nb >= 4 && $nb < 6)
         $q = $em->createQuery('update mqlUITCandidatureBundle:Candidature c set c.isvalid = :t where c.candidat = :id')->setParameter('id',$Candidat)->setParameter('t','t');
         $q->execute();
         
-       $entity = $em->getRepository('mqlUITCandidatureBundle:Candidat')->find($usr->getId());
+       $entity = $em->getRepository('mqlUITCandidatureBundle:Candidat')->findOneByUserfos($usr->getId());
        $experiences = $em->getRepository('mqlUITCandidatureBundle:Experience')->findByCandidat($Candidat);
        $formations = $em->getRepository('mqlUITCandidatureBundle:Diplome')->findByCandidat($Candidat);
        $semestres = $em->getRepository('mqlUITCandidatureBundle:DetailSemestre')->findByCandidat($Candidat);
@@ -324,7 +324,8 @@ else if ($nb >= 4 && $nb < 6)
         $repository = $this->getDoctrine()->getRepository('mqlUITCandidatureBundle:Candidat'); 
         $Candidat = $repository->findOneBy( array('userfos' =>$usr->getId()) );
         
-       $entity = $em->getRepository('mqlUITCandidatureBundle:Candidat')->find($usr->getId());
+       $entity = $em->getRepository('mqlUITCandidatureBundle:Candidat')->findOneByUserfos($usr->getId());
+      
        $experiences = $em->getRepository('mqlUITCandidatureBundle:Experience')->findByCandidat($Candidat);
        $formations = $em->getRepository('mqlUITCandidatureBundle:Diplome')->findByCandidat($Candidat);
        $semestres = $em->getRepository('mqlUITCandidatureBundle:DetailSemestre')->findByCandidat($Candidat);
