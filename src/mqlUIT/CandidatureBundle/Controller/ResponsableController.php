@@ -210,4 +210,31 @@ $editForm = $this->createForm(new ResponsableType(), $entity);
             ->getForm()
         ;
     }
+     public function listeCandidatAction()
+    {
+        $usr= $this->get('security.context')->getToken()->getUser();
+        $repository = $this->getDoctrine()->getRepository('mqlUITCandidatureBundle:Responsable'); 
+        $responsable = $repository->findOneBy( array('userfos' =>$usr->getId()) );
+        $em = $this->getDoctrine()->getEntityManager();
+        $qb = $em->createQueryBuilder();
+        $qb->select('c.nom,c.prenom,c.cin,c.cne','cd')
+               ->from('mqlUITCandidatureBundle:Candidature','cd')
+                ->leftJoin('cd.filiere','f')
+                ->leftJoin('cd.candidat','c')
+                
+               ->where('f.responsable = :id')
+                 ->setParameter('id', $responsable)
+               ;
+               $query=$qb->getQuery();
+               $candidats = $query->getResult();
+             
+      
+        
+        return $this->render('mqlUITCandidatureBundle:Responsable:indexCandidat.html.twig', array(
+           
+           
+            'candidats' => $candidats
+        ));
+    }
+
 }

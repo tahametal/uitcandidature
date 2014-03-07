@@ -12,7 +12,10 @@ class FiliereType extends AbstractType
     {
         $builder
             ->add('intitule')
-            ->add('grade')
+            ->add('grade','choice', array(
+                    'choices'   => array('1' => 'Licence', '2' => 'Master'),
+                    'required'  => TRUE,
+                )) 
            //->add('responsable')
         ;
     }

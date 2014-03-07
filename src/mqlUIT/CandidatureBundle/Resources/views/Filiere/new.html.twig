@@ -1,21 +1,15 @@
 {% extends '::base.html.twig' %}
-
+{% block titreP -%}Creation d'une nouvelle Filiere {% endblock %}
 {% block body -%}
-    <h1>Filiere creation</h1>
+ 
 
     <form action="{{ path('filiere_create') }}" method="post" {{ form_enctype(form) }}>
         <input type="hidden" name="res" value="{{res}}" />
         {{ form_widget(form) }}
         <p>
-            <button type="submit">Create</button>
+            <button type="submit" class="btn btn-large btn-warning">Valider</button>
         </p>
     </form>
 
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('filiere') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
+
 {% endblock %}

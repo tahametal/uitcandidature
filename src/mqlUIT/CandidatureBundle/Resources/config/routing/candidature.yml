@@ -44,3 +44,6 @@ candidature_validation:
 candidature_validationshow:
     pattern:  /candidature/validationshow
     defaults: { _controller: "mqlUITCandidatureBundle:Candidature:validationshow" }
+responsable_candidat:
+    pattern:  /candidature/responsableCandidats
+    defaults: { _controller: "mqlUITCandidatureBundle:Responsable:listeCandidat" }

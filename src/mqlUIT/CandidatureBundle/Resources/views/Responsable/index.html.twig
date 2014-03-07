@@ -28,76 +28,57 @@
                                         </tr>
                                         </thead>
                                         <tbody>
-                                            {% if filiere == null%}
-                                                 {% for entity in entities %}
-                                                 
-                                                
-                                              
+                                   
+                                        
+                                        {% for fil in filiere %}
                                             <tr>
                                                    
-                                                    <td>{{ entity.nom }}</td>
-                                                    <td style="width: 100px;">{{ entity.prenom }}</td>
-                                                    <td>{{ entity.email }}</td>
-                
-                                               
-                                                <td>              
-                                    
-                                                 <a class="btn btn-small btn-info"  href="{{ path('filiere_new', { 'id': entity.id }) }}"  title="affecter"  ><i class="btn-icon-only icon-ok"></i></a>
-                                                 
-                                              
-                                                 </td>
-                                               <td>
-                                              <a  data-toggle="modal"  href="{{ path('responsable_edit', { 'id': entity.id }) }}"  class="btn btn-small btn-warning"  title="modifier" > 
-                                                   <i class="btn-icon-only icon-edit"></i>
-                                              </a>
-                                                       
-                                              </td>
-                                            </tr>   
-                                                 {% endfor %}   
-                                            
-   
-
-                                             {% endif %}   
-                                                
-                                            {% for entity in entities %}
-                                                 {% set counter = 0 %}
-                                                
-                                                {% for fil in filiere %}
-                                            <tr>
-                                                   
-                                                    <td>{{ entity.nom }}</td>
-                                                    <td style="width: 100px;">{{ entity.prenom }}</td>
-                                                    <td>{{ entity.email }}</td>
+                                                    <td>{{ fil.responsable.nom }}</td>
+                                                    <td style="width: 100px;">{{ fil.responsable.prenom }}</td>
+                                                    <td>{{ fil.responsable.email }}</td>
                 
                                                
                                                 <td>
-                                                    
-                                                    {% if entity.id == fil.responsable.id %}
-                                                        {% set counter = 5 %}
-                                                    {% endif %}
-                                                   
-                                                        
-                                                 {% if counter == 0 %}
-                                                 <a class="btn btn-small btn-info"  href="{{ path('filiere_new', { 'id': entity.id }) }}"  title="affecter"  ><i class="btn-icon-only icon-ok"></i></a>
-                                                 {% endif %}
-                                                 {% if counter == 5 %} 
-                                                    
-                                                   
-                                                   <a  data-toggle="modal"  href="{{ path('filiere_edit', { 'id': fil.id }) }}"   title="modifier" > 
+                                 
+                                              <a  data-toggle="modal"  href="{{ path('filiere_edit', { 'id': fil.id }) }}"   title="modifier" > 
                                                     {{ fil.intitule }}
                                               </a>
-                                                 {% endif %} 
+                                               
                                                  </td>
                                                <td>
-                                              <a  data-toggle="modal"  href="{{ path('responsable_edit', { 'id': entity.id }) }}"  class="btn btn-small btn-warning"  title="modifier" > 
+                                              <a  data-toggle="modal"  href="{{ path('responsable_edit', { 'id': fil.responsable.id }) }}"  class="btn btn-small btn-warning"  title="modifier" > 
                                                    <i class="btn-icon-only icon-edit"></i>
                                               </a>
                                                        
                                               </td>
                                             </tr>   
-                                                 {% endfor %}   
-                                            {% endfor %}
-   
+                                         {% endfor %}   
+                                         
+   {% for res in entities %}
+        {% set counter = 0 %}
+          {% for fil in filiere %}
+           {% if res.id == fil.responsable.id %}
+             {% set counter = 1 %}
+          {% endif %}                                                                 
+          {% endfor %}  
+       {% if counter == 0 %}
+                                            <tr>
+                                            
+                                             <td>{{ res.nom }}</td>
+                                             <td style="width: 100px;">{{ res.prenom }}</td>
+                                             <td>{{ res.email }}</td>
+                                            <td> <a class="btn btn-small btn-info"  href="{{ path('filiere_new', { 'id': res.id }) }}"  title="affecter"  ><i class="btn-icon-only icon-ok"></i></a>
+                                            </td>  
+                                            <td>
+                                              <a  data-toggle="modal"  href="{{ path('responsable_edit', { 'id': res.id }) }}"  class="btn btn-small btn-warning"  title="modifier" > 
+                                                   <i class="btn-icon-only icon-edit"></i>
+                                              </a>
+                                                       
+                                              </td>  
+                                            
+                                            </tr>
+       {% endif %}                                     
+   {% endfor %}                                                
 
                                         </tbody>
                                     </table>
