@@ -9,3 +9,11 @@
     </form>
 
 {% endblock %}
+{% block javascripts %}
+<script type="text/javascript">
+     $(document).ready(function() {
+$("#mqluit_candidaturebundle_responsabletype_userfos").hide(); 
+$('label[for="mqluit_candidaturebundle_responsabletype_userfos"]').hide ();
+    });
+</script>
+{% endblock %}

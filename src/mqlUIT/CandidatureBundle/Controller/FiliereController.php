@@ -47,7 +47,7 @@ class FiliereController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('filiere_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('responsable'));
         }
 
         return $this->render('mqlUITCandidatureBundle:Filiere:new.html.twig', array(
@@ -139,7 +139,7 @@ class FiliereController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('filiere_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('responsable'));
         }
 
         return $this->render('mqlUITCandidatureBundle:Filiere:edit.html.twig', array(
@@ -170,7 +170,7 @@ class FiliereController extends Controller
             $em->flush();
         }
 
-        return $this->redirect($this->generateUrl('filiere'));
+        return $this->redirect($this->generateUrl('responsable'));
     }
 
     /**
