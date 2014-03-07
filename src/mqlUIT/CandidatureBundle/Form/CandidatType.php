@@ -20,7 +20,11 @@ class CandidatType extends AbstractType
             ->add('email')
             ->add('telephone')
             ->add('nationalite')
-            ->add('ville')
+            ->add('ville', 'choice', array(
+                    'choices'   => array('Rabat' => 'Rabat', 'Casablanca' => 'Casablanca', 'Fes' => 'Fes', 'Meknes' => 'Meknes', 'Agadir' => 'Agadir', 'Marrakech' => 'Marrakech'),
+                    'required'  => TRUE,
+                )) 
+                
             ->add('pays')
             ->add('sexe', 'choice', array(
                     'choices'   => array('Masculin' => 'Masculin', 'Féminin' => 'Féminin'),

@@ -32,7 +32,10 @@ class DiplomeType extends AbstractType
                                                 'attr' => array('class' => 'date'),
                                                 ))
             ->add('etablissement')
-            ->add('ville')
+            ->add('ville', 'choice', array(
+                    'choices'   => array('Rabat' => 'Rabat', 'Casablanca' => 'Casablanca', 'Fes' => 'Fes', 'Meknes' => 'Meknes', 'Agadir' => 'Agadir', 'Marrakech' => 'Marrakech'),
+                    'required'  => TRUE,
+                )) 
             ->add('diplometype', 'entity', array(
         'class' => 'mqlUITCandidatureBundle:diplometype',
         'query_builder' => function(EntityRepository $er) use ($user) {

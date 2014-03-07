@@ -25,7 +25,7 @@
         {% for entity in candidatures %}
             <tr>
                 <td><h5>{{ entity.filiere }} </h5></td>
-                <td>Formation n° {{loop.index}}</td>
+                <td>Candidature n° {{loop.index}}</td>
                 <td>
                 <ul>
                    
@@ -50,9 +50,9 @@
         </a>
 		{% endif %}
 {% if counter >= 1 %}
-<a href="{{ path('candidat_inscription2') }}" class="btn btn-large btn-primary">Retour</a>
+<a href="{{ path('candidat_inscription2') }}" class="btn btn-small btn-primary">Retour</a>
 <strong>        </strong>
-<a href="{{ path('candidature_validationshow') }}" class="btn btn-large btn-primary">Continue</a>			
+<a href="{{ path('candidature_validationshow') }}" class="btn btn-small btn-primary">Continue</a>			
 {% endif %}					
 				
 
@@ -133,7 +133,6 @@
     <script src="{{ asset('js/load-image.min.js') }}"></script>
     <script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jqueryui/1.8.14/jquery-ui.min.js"></script>
        
-       
-
+      
 {% endblock %}
                                         
