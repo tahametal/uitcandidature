@@ -31,7 +31,10 @@ class DiplomeType extends AbstractType
                                                 'format' => 'yyyy-MM-dd',
                                                 'attr' => array('class' => 'date'),
                                                 ))
-            ->add('etablissement')
+            ->add('etablissement', 'choice', array(
+                    'choices'   => array('faculté des sciences' => 'faculté des sciences', 'faculté des lettres et des sciences humaines' => 'faculté des lettres et des sciences humaines', 'Ecole supérieure de technologie ' => 'Ecole supérieure de technologie ', 'Institut Spécialisé de Technologie Appliquée' => 'Institut Spécialisé de Technologie Appliquée'),
+                    'required'  => TRUE,
+                )) 
             ->add('ville', 'choice', array(
                     'choices'   => array('Rabat' => 'Rabat', 'Casablanca' => 'Casablanca', 'Fes' => 'Fes', 'Meknes' => 'Meknes', 'Agadir' => 'Agadir', 'Marrakech' => 'Marrakech'),
                     'required'  => TRUE,

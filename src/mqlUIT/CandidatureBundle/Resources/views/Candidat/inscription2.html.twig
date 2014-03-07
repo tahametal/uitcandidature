@@ -20,7 +20,7 @@
                                      <table class="table table-bordered table-striped table-highlight">
                                         <thead>
                                         <tr>
-                                            <th>Intitulé</th>
+                                            <th>Entreprise</th>
                                             <th>Date Début</th>
                                             <th>Date Fin</th>
                                             <th>Type</th>
@@ -92,7 +92,7 @@
                                              {% set counter1 = 0 %}
                                             {% for dip in diplomes %}
                                             <tr>
-                                                <td>{{dip.intitule }}</td>
+                                                <td>{{dip.intitule}}</td>
                                                 <td>{{dip.dateobtention|date('Y-m-d ')}}</td>
                                                 <td>{{dip.etablissement}}</td>
                                                 <td>{{dip.diplometype.type}}</td>
@@ -129,7 +129,7 @@
 					
 				<div class="widget-header">
 					<i class="icon-check"></i>
-					Note Semestre
+					Notes des Semestres
 				</div> <!-- /widget-header -->
 				
 				<div class="widget-content">
@@ -183,17 +183,50 @@
     
 
 <div id="modal-exp" class="modal hide fade" tabindex="-1">
-      <form action="{{ path('experience_create') }}" method="post" {{ form_enctype(formexp) }}>
+      <form action="{{ path('experience_create') }}" method="post" {{ form_enctype(formexp) }} id="validation-form" class="form-horizontal">
     <div class="modal-header">
         <a class="close" data-dismiss="modal">&times;</a>
         <h3 class="modal-title">Ajouter une experience</h3>
     </div>
     <div class="modal-body">
-      
+      <fieldset>
+	<div class="control-group">
+	<label class="control-label" for="mqluit_candidaturebundle_candidattype_nom">{{ form_label(formexp.intitule, 'Entreprise'|trans) }}</label>
+	<div class="controls">
+        {{ form_widget(formexp.intitule) }}
+	</div>
+	</div>
+          
+          <div class="control-group">
+	<label class="control-label" for="mqluit_candidaturebundle_candidattype_nom">{{ form_label(formexp.datedebut, 'date de début'|trans) }}</label>
+	<div class="controls">
+        {{ form_widget(formexp.datedebut) }}
+	</div>
+	</div>
+          
+        <div class="control-group">
+	<label class="control-label" for="mqluit_candidaturebundle_candidattype_nom">{{ form_label(formexp.datefin, 'date de fin'|trans) }}</label>
+	<div class="controls">
+        {{ form_widget(formexp.datefin) }}
+	</div>
+        </div>
+          
+        <div class="control-group">
+	<label class="control-label" for="mqluit_candidaturebundle_candidattype_nom">{{ form_label(formexp.description, 'Description'|trans) }}</label>
+	<div class="controls">
+        {{ form_widget(formexp.description) }}
+	</div>
+        </div>
+          
+        <div class="control-group">
+	<label class="control-label" for="mqluit_candidaturebundle_candidattype_nom">{{ form_label(formexp.type, 'Type'|trans) }}</label>
+	<div class="controls">
+        {{ form_widget(formexp.type) }}
+	</div>
+        </div>
+      </fieldset>
+{{ form_rest(formexp) }}
         
-        <p>
-          {{ form_widget(formexp) }}
-        </p>
     </div>
         
         
@@ -209,17 +242,56 @@
 
 
 <div id="modal-dip" class="modal hide fade" tabindex="-1">
-  <form action="{{ path('diplome_create') }}" method="post" {{ form_enctype(formdip) }}>
+  <form action="{{ path('diplome_create') }}" method="post" {{ form_enctype(formdip) }} id="validation-form" class="form-horizontal">
     <div class="modal-header">
         <a class="close" data-dismiss="modal">&times;</a>
         <h3 class="modal-title">Ajouter une Formation</h3>
     </div>
     <div class="modal-body">
-      
-        {{ form_widget(formdip) }}
-        <p>
+      <fieldset>
+	<div class="control-group">
+	<label class="control-label" for="mqluit_candidaturebundle_candidattype_nom">{{ form_label(formdip.intitule, 'Intitulé'|trans) }}</label>
+	<div class="controls">
+        {{ form_widget(formdip.intitule) }}
+	</div>
+	</div>
+          <div class="control-group">
+	<label class="control-label" for="mqluit_candidaturebundle_candidattype_nom">{{ form_label(formdip.dateinscription, 'Date d inscription'|trans) }}</label>
+	<div class="controls">
+        {{ form_widget(formdip.dateinscription) }}
+	</div>
+	</div>
           
-        </p>
+        <div class="control-group">
+	<label class="control-label" for="mqluit_candidaturebundle_candidattype_nom">{{ form_label(formdip.dateobtention, 'Date obtention'|trans) }}</label>
+	<div class="controls">
+        {{ form_widget(formdip.dateobtention) }}
+	</div>
+	</div>
+          
+        <div class="control-group">
+	<label class="control-label" for="mqluit_candidaturebundle_candidattype_nom">{{ form_label(formdip.etablissement, 'Etablissement'|trans) }}</label>
+	<div class="controls">
+        {{ form_widget(formdip.etablissement) }}
+	</div>
+	</div>
+          
+        <div class="control-group">
+	<label class="control-label" for="mqluit_candidaturebundle_candidattype_nom">{{ form_label(formdip.ville, 'Ville'|trans) }}</label>
+	<div class="controls">
+        {{ form_widget(formdip.ville) }}
+	</div>
+	</div>
+          
+         <div class="control-group">
+	<label class="control-label" for="mqluit_candidaturebundle_candidattype_nom">{{ form_label(formdip.diplometype, 'Type diplome'|trans) }}</label>
+	<div class="controls">
+        {{ form_widget(formdip.diplometype) }}
+	</div>
+	</div> 
+       </fieldset>
+{{ form_rest(formdip) }}
+        
     </div>
      
     <div class="modal-footer">
