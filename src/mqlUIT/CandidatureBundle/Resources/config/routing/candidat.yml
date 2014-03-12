@@ -3,7 +3,7 @@ candidat:
     defaults: { _controller: "mqlUITCandidatureBundle:Candidat:index" }
 
 candidat_show:
-    pattern:  /candidat/{id}/show
+    pattern:  /candidat/show
     defaults: { _controller: "mqlUITCandidatureBundle:Candidat:show" }
 
 candidat_new:

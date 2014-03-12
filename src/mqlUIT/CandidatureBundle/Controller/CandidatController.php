@@ -93,20 +93,21 @@ class CandidatController extends Controller
      * Finds and displays a Candidat entity.
      *
      */
-    public function showAction($id)
+    public function showAction()
     {
         $em = $this->getDoctrine()->getManager();
+        $usr= $this->get('security.context')->getToken()->getUser();
+        $repository = $this->getDoctrine()->getRepository('mqlUITCandidatureBundle:Candidat'); 
+        $Candidat = $repository->findOneBy( array('userfos' =>$usr->getId()) );
 
-        $entity = $em->getRepository('mqlUITCandidatureBundle:Candidat')->find($id);
-
-        if (!$entity) {
+        if (!$Candidat) {
             throw $this->createNotFoundException('Unable to find Candidat entity.');
         }
 
-        $deleteForm = $this->createDeleteForm($id);
-$editForm = $this->createForm(new CandidatType(), $entity);
+        $deleteForm = $this->createDeleteForm($Candidat->getId());
+$editForm = $this->createForm(new CandidatType(), $Candidat);
         return $this->render('mqlUITCandidatureBundle:Candidat:show.html.twig', array(
-            'entity'      => $entity,
+            'entity'      => $Candidat,
             'delete_form' => $deleteForm->createView(),
             'edit_form'   => $editForm->createView(),
             ));
@@ -158,7 +159,7 @@ $editForm = $this->createForm(new CandidatType(), $entity);
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('candidat_show', array('id' => $id)));
+            return $this->redirect($this->generateUrl('candidat_show'));
         }
 
         return $this->render('mqlUITCandidatureBundle:Candidat:edit.html.twig', array(
