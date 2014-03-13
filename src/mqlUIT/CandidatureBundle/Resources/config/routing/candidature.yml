@@ -47,3 +47,6 @@ candidature_validationshow:
 responsable_candidat:
     pattern:  /candidature/responsableCandidats
     defaults: { _controller: "mqlUITCandidatureBundle:Responsable:listeCandidat" }
+candidature_annulation:
+    pattern:  /candidature/Annulation/{id}
+    defaults: { _controller: "mqlUITCandidatureBundle:Candidature:annulation" }

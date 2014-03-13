@@ -217,14 +217,13 @@ $editForm = $this->createForm(new ResponsableType(), $entity);
         $responsable = $repository->findOneBy( array('userfos' =>$usr->getId()) );
         $em = $this->getDoctrine()->getEntityManager();
         $qb = $em->createQueryBuilder();
-        $qb->select('c.nom,c.prenom,c.cin,c.cne','cd')
+        $qb->select('c.nom,c.prenom,c.cin,c.cne,cd.isvalid,cd.id')
                ->from('mqlUITCandidatureBundle:Candidature','cd')
-                ->leftJoin('cd.filiere','f')
-                ->leftJoin('cd.candidat','c')
-                
-               ->where('f.responsable = :id')
-                 ->setParameter('id', $responsable)
-               ;
+               ->leftJoin('cd.filiere','f')
+               ->leftJoin('cd.candidat','c')
+               ->where('f.responsable = :id and cd.isvalid like :t') 
+               ->setParameter('id', $responsable)
+               ->setParameter('t', "t");
                $query=$qb->getQuery();
                $candidats = $query->getResult();
              

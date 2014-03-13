@@ -317,7 +317,7 @@ else if ($nb >= 4 && $nb < 6)
     }
     
     
-                public function validationshowAction()
+    public function validationshowAction()
     {
         $em = $this->getDoctrine()->getManager();
         $usr= $this->get('security.context')->getToken()->getUser();
@@ -343,7 +343,12 @@ else if ($nb >= 4 && $nb < 6)
     }
     
     
-    
-    
-    
+    public function AnnulationAction($id)
+    {        
+        $em = $this->getDoctrine()->getManager();  
+        $q = $em->createQuery('update mqlUITCandidatureBundle:Candidature c set c.isvalid = :f where c.id = :id')->setParameter('id',$id)->setParameter('f','f');
+        $q->execute();
+       return $this->redirect($this->generateUrl('responsable_candidat'));   
+    }
+ 
 }
